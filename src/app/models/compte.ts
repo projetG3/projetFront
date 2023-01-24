@@ -4,5 +4,4 @@ export interface Compte {
   nom: string;
   prenom: string;
   etablissement: string;
-  motDePasse: string;
 }
