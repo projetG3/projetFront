@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { AuthGuard } from './services/auth/auth.guard';
+import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
+import { PanierComponent } from './panier/panier.component';
+
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'home', component: HomeComponent },
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'panier', component: PanierComponent }
 ];
 
 @NgModule({
