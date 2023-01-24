@@ -1,5 +1,6 @@
 
-<div class="login">
+<div class="login" style="text-align:center">
+    <img style style="margin-bottom:3vh" src="assets/image/2-rogner.png">
     <h2 class="login-header">S'identifier</h2>
     <form [formGroup]="loginForm" class="login-container" (ngSubmit)="seConnecter()">
         <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
