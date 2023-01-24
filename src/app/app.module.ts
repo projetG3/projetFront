@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ConnexionComponent } from './connexion/connexion.component';
-import { AdminComponent } from './admin/admin.component';
-import { HomeComponent } from './home/home.component';
-import { ProductComponent } from './product/product.component';
+import { ConnexionComponent } from './pages/connexion/connexion.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ProductComponent } from './pages/product/product.component';
 
 @NgModule({
   declarations: [
