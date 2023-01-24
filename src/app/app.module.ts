@@ -8,6 +8,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
+import { PanierComponent } from './panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProductComponent } from './product/product.component';
     ConnexionComponent,
     AdminComponent,
     HomeComponent,
-    ProductComponent
+    ProductComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,
