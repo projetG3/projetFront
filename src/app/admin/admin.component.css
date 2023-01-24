@@ -1,0 +1,11 @@
+button{
+    background: var(--shamrock-green);
+    border-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover{
+    background: var(--sheen-green);
+}
+  

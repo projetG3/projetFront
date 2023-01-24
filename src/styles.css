@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    --sheen-green: hsla(91, 100%, 44%, 1);
+    --dark-pastel-green: hsla(130, 54%, 48%, 1);
+    --green-pigment: hsla(139, 58%, 42%, 1);
+    --shamrock-green: hsla(149, 64%, 36%, 1);
+    --cerulean-crayola: hsla(194, 75%, 46%, 1);
+    --blue-jeans: hsla(202, 100%, 61%, 1);
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+body {
+    font-family: 'Open Sans';
+}
+
+.login-container{
+    float: right;
+}

@@ -1,0 +1,78 @@
+
+.login {
+  width: 60%;
+  margin: 20vh auto;
+  font-size: 11pt;
+}
+
+.login-header,
+.login p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.login-triangle {
+  width: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 12px solid transparent;
+}
+
+.login-header {
+  background: var(--sheen-green);
+  padding: 20px;
+  font-size: 11pt;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.login-container {
+  background: #ebebeb;
+  padding: 12px;
+  width:100%;
+}
+
+.login p {
+  padding: 12px;
+}
+
+.login input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  padding: 16px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 0.95em;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  background: #fff;
+  border-color: #bbb;
+  color: #555;
+}
+
+.login input[type="email"]:focus,
+.login input[type="password"]:focus {
+  border-color: #888;
+}
+
+.login input[type="submit"] {
+  background: var(--shamrock-green);
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login input[type="submit"]:hover {
+  background: var(--sheen-green);
+}
+
+.login input[type="submit"]:focus {
+  border-color: var(--sheen-green);
+}
+
