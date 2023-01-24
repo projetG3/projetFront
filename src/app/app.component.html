@@ -1,12 +1,12 @@
 <div *ngIf="!isRouteConnexion" class="navbarDiv">
   <header class="section-header">
-    
+
     <nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
       <div class="container-fluid">
       </div> <!-- navbar-collapse .// -->
       <!-- container //  -->
     </nav> <!-- header-top-light.// -->
-    
+
     <section class="header-main border-bottom bg-white">
       <div class="container-fluid">
         <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
@@ -19,28 +19,28 @@
               <i class="bx bx-search"></i>
             </div>
           </div>
-          
+
           <div class="col-md-2">
             <div class="d-flex d-none d-md-flex flex-row align-items-center">
                 <a href="/panier"><h1 class="bi bi-cart"></h1></a>
                 <div class="d-flex flex-column ms-2">
                     <span class="qty">1 Product</span>
                     <span class="fw-bold">27.90 €</span>
-                </div>    
-            </div>    
-            
+                </div>
+            </div>
+
             <div *ngIf="getStatutConnection()">
               <button (click)="seDeconnecter()">Se déconnecter</button>
-            </div>     
+            </div>
             <div *ngIf="!getStatutConnection()">
                 <button [routerLink]="['connexion']">Se connecter</button>
-            </div>      
-            
+            </div>
+
           </div>
         </div>
-      </div> 
+      </div>
     </section>
-    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
@@ -50,7 +50,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Acceuil</a>
+              <a class="nav-link active" aria-current="page" href="#">🏠 Acceuil</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
