@@ -12,7 +12,7 @@ export class CompteService {
   constructor(private http: HttpClient) { }
 
   checkUser(user : Utilisateur): Observable<Object> {
-    return this.http.get(`${this.url}/${user.id}`);
+    return this.http.get(`${this.url}/auth/${user.id}`);
   }
 
 }
