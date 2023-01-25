@@ -12,6 +12,7 @@ export class CompteService {
   constructor(private http: HttpClient) { }
 
   checkUser(user : Utilisateur): Observable<Object> {
+    console.log("Checking user: ", user)
     return this.http.get(`${this.url}/${user.id}`);
   }
 

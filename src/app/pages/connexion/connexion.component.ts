@@ -1,3 +1,4 @@
+import { CompteService } from './../../services/compte/compte.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
@@ -12,11 +13,11 @@ import { AuthService } from '../../services/auth/auth.service';
 export class ConnexionComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitted  =  false;
-  constructor(private authService: AuthService,
-    private router: Router, private formBuilder: FormBuilder ) { }
+
+  constructor(private authService: AuthService,private router: Router, private formBuilder: FormBuilder, private compteService :CompteService) { }
     ngOnInit() {
       this.loginForm  =  this.formBuilder.group({
-          email: ['', Validators.required],
+          id: ['', Validators.required],
           password: ['', Validators.required]
       });
   }
@@ -27,6 +28,15 @@ export class ConnexionComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     }
+    var user: Utilisateur = {
+      id: this.loginForm.value.id,
+      password: this.loginForm.value.password
+    };
+
+    if(this.compteService.checkUser(user)){
+      return
+    }
+
     this.authService.seConnecter(this.loginForm.value);
     this.router.navigateByUrl('/admin');
   }

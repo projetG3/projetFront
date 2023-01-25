@@ -19,6 +19,4 @@ export class AuthService {
     localStorage.removeItem('ACCESS_TOKEN');
     this.isConnected = false;
   }
-
-
 }
