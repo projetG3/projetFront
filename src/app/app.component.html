@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
           <div class="col-md-2">
-            <img  class="d-none d-md-flex" src="assets/image/2-rogner.png" width="100">
+            <img  class="d-none d-md-flex" src="assets/image/2-rogner.png" width="80%">
           </div>
           <div class="col-md-8">
             <form class="d-flex form-inputs">
@@ -19,22 +19,23 @@
             </form>
           </div>
 
-          <div class="col-md-2">
-            <div class="d-flex d-none d-md-flex flex-row align-items-center">
-                <a href="/panier"><h1 class="bi bi-cart"></h1></a>
-                <div class="d-flex flex-column ms-2">
-                    <span class="qty">1 Product</span>
-                    <span class="fw-bold">27.90 €</span>
-                </div>
+          <div class="col-md">
+            <div class="item">
+              <a href="/panier">
+                <h1 class="bi bi-cart"></h1>
+                <span class="notify-badge" >1</span>
+              </a>
             </div>
+          </div>
 
+
+          <div class="col-md">
             <div *ngIf="getStatutConnection()">
-              <button (click)="seDeconnecter()">Se déconnecter</button>
+              <button class="logButton" (click)="seDeconnecter()">Se déconnecter</button>
             </div>
             <div *ngIf="!getStatutConnection()">
-                <button [routerLink]="['connexion']">Se connecter</button>
+                <button class="logButton" [routerLink]="['connexion']">Se connecter</button>
             </div>
-
           </div>
         </div>
       </div>

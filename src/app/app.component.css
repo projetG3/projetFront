@@ -32,3 +32,28 @@ form:focus-within {
 .material-symbols-outlined {
   margin-left:0.25vh;
 }
+
+.logButton{
+  border-radius: 2vh;
+}
+
+
+
+
+
+
+.item {
+  position:relative;
+  display:inline-block;
+}
+.notify-badge{
+  position: absolute;
+  right:-10px;
+  top:20px;
+  background:red;
+  text-align: center;
+  border-radius: 30px 30px 30px 30px;
+  color:white;
+  padding:1px 10px;
+  font-size:20px;
+}
