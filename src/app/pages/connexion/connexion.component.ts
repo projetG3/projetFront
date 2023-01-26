@@ -33,9 +33,9 @@ export class ConnexionComponent implements OnInit {
       password: this.loginForm.value.password
     };
 
-    if(this.compteService.checkUser(user)){
+    /*if(this.compteService.checkUser(user)){
       return
-    }
+    }*/
 
     this.authService.seConnecter(this.loginForm.value);
     this.router.navigateByUrl('/admin');
