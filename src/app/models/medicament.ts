@@ -1,7 +1,8 @@
 import {VoieAdministration} from "./voieAdministration";
-import {Titulaire} from "./titulaire";
-import {Conditionsmedicamenteuse} from "./conditionsmedicamenteuse";
-import {Informationsimportante} from "./informationsimportante";
+import {EstDelivreSous} from "./estDelivreSous";
+import {EstCreerPar} from "./estCreerPar";
+import {Informe} from "./informe";
+import {AdministrerPar} from "./administrePar";
 
 export interface Medicament {
   id: number;
@@ -14,8 +15,8 @@ export interface Medicament {
   statusbdm:string;
   numeroautorisationeuropeenne:string;
   surveillancerenforcee:boolean;
-  voieadministrations:VoieAdministration[];
-  titulaires:Titulaire[];
-  conditionsmedicamenteuses:Conditionsmedicamenteuse[];
-  informationsimportantes:Informationsimportante[];
+  administrerpar:AdministrerPar[];
+  estcrerpar:EstCreerPar[];
+  estdelivresous:EstDelivreSous[];
+  informe:Informe[];
 }

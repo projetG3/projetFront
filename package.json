@@ -20,14 +20,14 @@
     "@angular/router": "^15.1.0",
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
+    "axios": "^1.2.4",
     "bootstrap-icons": "^1.10.3",
     "primeicons": "^6.0.1",
     "primeng": "^15.1.1",
     "rxjs": "~7.8.0",
     "save": "^2.9.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0",
-    "axios": "^1.2.4"
+    "zone.js": "~0.12.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.1.2",

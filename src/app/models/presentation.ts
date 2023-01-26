@@ -13,6 +13,6 @@ export interface Presentation {
   indications:string;
   quantitedispo:number;
   codecis:Medicament;
-  tauxderemboursements:Tauxderemboursement[];
+  estrembourseeas:Estrembourseeas[];
 
 }
