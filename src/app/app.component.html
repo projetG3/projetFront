@@ -1,21 +1,36 @@
 <div *ngIf="!isRouteConnexion" class="navbarDiv">
   <header class="section-header">
-
     <nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
-      <div class="container-fluid">
-      </div>
+      <div class="container-fluid"></div>
     </nav>
     <section class="header-main border-bottom bg-white">
       <div class="container-fluid">
         <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
           <div class="col-md-2">
-            <a href="#"><img  class="d-none d-md-flex" src="assets/image/2-rogner.png" width="80%"></a>
+            <a href="#"
+              ><img
+                class="d-none d-md-flex"
+                src="assets/image/2-rogner.png"
+                width="80%"
+            /></a>
           </div>
           <div class="col-md-8">
             <form class="d-flex form-inputs">
-              <input class="form-control" type="text" placeholder="Chercher un produit...">
-              <button class="material-symbols-outlined " style="width:15%">tune</button>
-              <button [routerLink]="['produit']" class="material-symbols-outlined" style="width:15%">search</button>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Chercher un produit..."
+              />
+              <button class="material-symbols-outlined" style="width: 15%">
+                tune
+              </button>
+              <button
+                [routerLink]="['presentations']"
+                class="material-symbols-outlined"
+                style="width: 15%"
+              >
+                search
+              </button>
             </form>
           </div>
 
@@ -23,19 +38,30 @@
             <div class="item">
               <a href="/panier">
                 <h1 class="bi bi-cart"></h1>
-                <span class="notify-badge" >1</span>
+                <span class="notify-badge">1</span>
               </a>
             </div>
           </div>
 
-
           <div class="col-md">
             <div *ngIf="getStatutConnection()">
-              <button class="logButton" (click)="seDeconnecter()">Se déconnecter</button>
-              <button pButton label="Logout" icon="pi pi-power-off"></button>
+              <!-- <button class="logButton" >Se déconnecter</button> -->
+              <button
+                pButton
+                class="login"
+                (click)="seDeconnecter()"
+                label="Logout"
+                icon="pi pi-power-off"
+              ></button>
             </div>
             <div *ngIf="!getStatutConnection()">
-                <button class="logButton" [routerLink]="['connexion']">Se connecter</button>
+              <button
+                pButton
+                class="login"
+                [routerLink]="['connexion']"
+                label="Login"
+                icon="pi pi-power-off"
+              ></button>
             </div>
           </div>
         </div>
@@ -45,21 +71,43 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand d-md-none d-md-flex" href="#">Categories</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Accueil</a
+              >
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                 Afficher mes commandes
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Afficher mes commandes
               </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
                 <li><a class="dropdown-item" href="#">Mes commandes</a></li>
-                <li><a class="dropdown-item" href="#">Mes commandes types</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Mes commandes types</a>
+                </li>
               </ul>
             </li>
           </ul>

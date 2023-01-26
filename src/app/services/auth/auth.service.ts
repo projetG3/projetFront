@@ -33,11 +33,10 @@ export class AuthService {
     try {
       let reponse = await lastValueFrom(this.httpClient.post<Compte>('http://localhost:8080/compte/auth', {id:user.id, password:user.password}));
       console.log(reponse);
-      return {compte : reponse}; 
-    } catch (error : any) {
-      return {error : error.error.message};
+      return{compte : reponse};
+    } catch (error:any) {
+      throw new Error(error)
     }
-
   }
 
 }

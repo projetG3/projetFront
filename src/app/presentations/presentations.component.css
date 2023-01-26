@@ -1,0 +1,22 @@
+.product-list-detail {
+  display: grid;
+  align-items: center;
+  }
+
+  .product-list-detail h5 {
+  font-weight: bold;
+  }
+
+  .product-list-detail p {
+  margin: 0;
+  }
+
+
+  .card {
+  padding: 10px;
+  padding-bottom: 50px;
+  }
+
+  .productName{
+    right: 90;
+  }

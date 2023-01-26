@@ -1,9 +1,11 @@
+import { Presentation } from './models/presentation';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PanierComponent } from './panier/panier.component';
+import { PanierComponent } from './pages/panier/panier.component';
+import { PresentationsComponent } from './presentations/presentations.component';
 
 
 const routes: Routes = [
@@ -11,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'connexion', component: ConnexionComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'presentations', component: PresentationsComponent },
   { path: 'panier', component: PanierComponent }
 ];
 
