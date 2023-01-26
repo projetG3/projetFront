@@ -1,7 +1,7 @@
 export interface Compte {
-  email: string;
+  id: number;
   password: string;
   nom: string;
   prenom: string;
-  etablissement: string;
+  etablissement: any;
 }

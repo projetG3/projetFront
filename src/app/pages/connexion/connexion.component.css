@@ -49,14 +49,14 @@
   font-size: 0.95em;
 }
 
-.login input[type="email"],
+.login input[type="id"],
 .login input[type="password"] {
   background: #fff;
   border-color: #bbb;
   color: #555;
 }
 
-.login input[type="email"]:focus,
+.login input[type="id"]:focus,
 .login input[type="password"]:focus {
   border-color: #888;
 }

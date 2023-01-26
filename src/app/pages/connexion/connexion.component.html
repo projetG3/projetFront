@@ -5,12 +5,12 @@
     <img style style="margin-bottom:3vh" src="../../../assets/image/2-rogner.png">
     <h2 class="login-header">S'identifier</h2>
     <form [formGroup]="loginForm" class="login-container" (ngSubmit)="seConnecter()">
-        <p [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
-            <input type="email" placeholder="Email" formControlName="email">
+        <p [ngClass]="{ 'has-error': isSubmitted && formControls.id.errors }">
+            <input type="text" placeholder="Identifiant" formControlName="id">
         </p>
 
-        <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-            <div *ngIf="formControls.email.errors.required"><font color="red">L'email est requis</font></div>
+        <div *ngIf="isSubmitted && formControls.id.errors" class="help-block">
+            <div *ngIf="formControls.id.errors.required"><font color="red">L'identifiant est requis</font></div>
         </div>
 
         <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
