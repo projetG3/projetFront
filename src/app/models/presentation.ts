@@ -1,5 +1,5 @@
 import {Medicament} from "./medicament";
-import {Tauxderemboursement} from "./tauxderemboursement";
+import {Estrembourseeas} from "./estrembourseeas";
 
 export interface Presentation {
   id:number;
@@ -13,6 +13,6 @@ export interface Presentation {
   indications:string;
   quantitedispo:number;
   codecis:Medicament;
-  tauxderemboursements:Tauxderemboursement[];
+  estrembourseeas:Estrembourseeas[];
 
 }
