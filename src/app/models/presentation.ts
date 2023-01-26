@@ -1,5 +1,5 @@
 import {Medicament} from "./medicament";
-import {Tauxderemboursement} from "./tauxderemboursement";
+import {Estrembourseeas} from "./estrembourseeas";
 
 export interface Presentation {
   id:number;

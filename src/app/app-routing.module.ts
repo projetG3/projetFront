@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PanierComponent } from './panier/panier.component';
+import { PanierComponent } from './pages/panier/panier.component';
 
 
 const routes: Routes = [

@@ -1,4 +1,3 @@
-import { CompteService } from './../../services/compte/compte.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from  '@angular/forms';
 import { Router } from  '@angular/router';
@@ -14,7 +13,7 @@ export class ConnexionComponent implements OnInit {
   loginForm!: FormGroup;
   isSubmitted  =  false;
 
-  constructor(private authService: AuthService,private router: Router, private formBuilder: FormBuilder, private compteService :CompteService) { }
+  constructor(private authService: AuthService,private router: Router, private formBuilder: FormBuilder) { }
     ngOnInit() {
       this.loginForm  =  this.formBuilder.group({
           id: ['', Validators.required],
