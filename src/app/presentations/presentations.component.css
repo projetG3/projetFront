@@ -13,10 +13,38 @@
 
 
   .card {
-  padding: 10px;
-  padding-bottom: 50px;
+    padding: 3vh;
   }
 
-  .productName{
-    right: 90;
+
+
+
+  .presentationDescription{
+    font-size: 1.2vh !important;
+  }
+  .voieAdmin{
+    color:var(--cerulean-crayola);
+    font-size: 1.5vh !important;
+  }
+  .prix{
+    color: var(--shamrock-green);
+    position: absolute;
+    font-size: 1.35em;
+    top : 2vh;
+    right :1vh;
+    width: 10%;
+  }
+
+  .ajouterPanier{
+    position: absolute;
+    top : 8vh;
+    right :1vh;
+    width: 10%;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+    grid-gap: 1vh;
+    padding: 0.5em;
   }

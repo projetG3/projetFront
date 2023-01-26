@@ -11,6 +11,7 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {RippleModule} from 'primeng/ripple';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +49,7 @@ import { PresentationsComponent } from './presentations/presentations.component'
     ButtonModule,
     InputTextModule,
     RippleModule,
+    InputNumberModule,
     FormsModule
   ],
   bootstrap: [AppComponent]

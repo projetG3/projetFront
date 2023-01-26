@@ -1,62 +1,70 @@
 <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card">
-          <div class="card-body p-4">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col">
+      <div class="card">
+        <div class="card-body p-4">
+          <div class="row">
 
-            <div class="row">
-
-              <div class="col-lg-7">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <p class="mb-1">Mon Panier</p>
-                        <p class="mb-0">4 items dans le panier</p>
-                    </div>
-                    </div>
+            <div class="infoPanier">
+              <div>
+                <p class="mb-1 titrePanier">Mon Panier</p>
+                <p class="mb-0 coutPanier">2 items dans le panier</p>
               </div>
-
-              <div class="card mb-3 mb-lg-0">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex flex-row align-items-center">
-                      <div class="ms-3">
-                        <h5>DOLIPRANE</h5>
-                        <p class="small mb-0">Effervescent - 500mg</p>
-                      </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center">
-                      <div style="width: 10vh;">
-                        <h6 class="fw-normal mb-0">Qte: 16</h6>
-                      </div>
-                      <div style="width: 90px;">
-                        <h5 class="mb-0">20.00€</h5>
-                      </div>
-                      <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <button class="validPanier" style="border-radius:10px">Valider mon panier ✅</button>
               </div>
-              <div class="card mb-3 mb-lg-0">
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex flex-row align-items-center">
-                      <div class="ms-3">
-                        <h5>ARNICA MONTANA</h5>
-                        <p class="small mb-0">Pomade - 200mg</p>
-                      </div>
-                    </div>
-                    <div class="d-flex flex-row align-items-center">
-                        <div style="width: 10vh;">
-                            <h6 class="fw-normal mb-0">Qte: 6</h6>
-                        </div>
-                      <div style="width: 80px;">
-                        <h5 class="mb-0">20.00€</h5>
-                      </div>
-                      <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
-              <div class="col-lg-5">
+
+
+            <div class="card mb-3 mb-lg-0">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex flex-row align-items-center">
+                    <div class="ms-3">
+                      <h5>DOLIPRANE</h5>
+                      <p class="small mb-0">Effervescent - 500mg</p>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row align-items-center">
+                    <div style="width: 10vh">
+                      <input type="number" style="width: 90%" value="16" />
+                    </div>
+                    <div style="width: 90px">
+                      <h5 class="mb-0">20.00€</h5>
+                    </div>
+                    <button style="all: unset; color: #cecece">
+                      <i class="fas fa-trash-alt">╳</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card mb-3 mb-lg-0">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex flex-row align-items-center">
+                    <div class="ms-3">
+                      <h5>ARNICA</h5>
+                      <p class="small mb-0">Pomade - 200mg</p>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row align-items-center">
+                    <div style="width: 10vh">
+                      <input type="number" style="width: 90%" value="4" />
+                    </div>
+                    <div style="width: 80px">
+                      <h5 class="mb-0">20.00€</h5>
+                    </div>
+                    <button style="all: unset; color: #cecece">
+                      <i class="fas fa-trash-alt">╳</i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
