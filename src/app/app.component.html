@@ -9,13 +9,13 @@
       <div class="container-fluid">
         <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
           <div class="col-md-2">
-            <img  class="d-none d-md-flex" src="assets/image/2-rogner.png" width="80%">
+            <a href="#"><img  class="d-none d-md-flex" src="assets/image/2-rogner.png" width="80%"></a>
           </div>
           <div class="col-md-8">
             <form class="d-flex form-inputs">
               <input class="form-control" type="text" placeholder="Chercher un produit...">
               <button class="material-symbols-outlined " style="width:15%">tune</button>
-              <button class="material-symbols-outlined" style="width:15%">search</button>
+              <button [routerLink]="['produit']" class="material-symbols-outlined" style="width:15%">search</button>
             </form>
           </div>
 
@@ -32,6 +32,7 @@
           <div class="col-md">
             <div *ngIf="getStatutConnection()">
               <button class="logButton" (click)="seDeconnecter()">Se déconnecter</button>
+              <button pButton label="Logout" icon="pi pi-power-off"></button>
             </div>
             <div *ngIf="!getStatutConnection()">
                 <button class="logButton" [routerLink]="['connexion']">Se connecter</button>

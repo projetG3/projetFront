@@ -7,6 +7,6 @@ import {HttpClient} from "@angular/common/http";
 export class CompteService {
   private url: string = "http://localhost:8080/compte/auth";
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
 }
