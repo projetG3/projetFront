@@ -2,9 +2,6 @@ import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {lastValueFrom} from "rxjs";
 import {Presentation} from "../../models/presentation";
-import {Utilisateur} from "../../models/utilisateur";
-import {Compte} from "../../models/compte";
-import {RechercheMedicament} from "../../models/rechercheMedicament";
 import {CritereRecherche} from "../../models/critereRecherche";
 
 @Injectable({
