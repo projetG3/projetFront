@@ -30,4 +30,10 @@ button:hover{
     background: var(--sheen-green);
 }
 
+p {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #000000;
+}
+
 
