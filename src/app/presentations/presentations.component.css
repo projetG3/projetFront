@@ -16,9 +16,6 @@
     padding: 3vh;
   }
 
-
-
-
   .presentationDescription{
     font-size: 1.2vh !important;
   }
@@ -37,9 +34,10 @@
 
   .ajouterPanier{
     position: absolute;
-    top : 8vh;
+    top : 12vh;
     right :1vh;
     width: 10%;
+    border-radius: 1vh;
   }
 
   .grid {

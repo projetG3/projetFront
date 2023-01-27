@@ -12,7 +12,7 @@ export interface Presentation {
   prix:number;
   indications:string;
   quantitedispo:number;
-  codecis:Medicament;
-  estrembourseeas:Estrembourseeas[];
+  // codecis:Medicament;
+  // estrembourseeas:Estrembourseeas[];
 
 }
