@@ -16,7 +16,6 @@ export class VoieAdministrationService {
   async getVoieAdministration(): Promise<any> {
     try {
       let reponse = await lastValueFrom(this.httpClient.get<VoieAdministration[]>('http://localhost:8080/voieadministration/list'));
-      console.log(reponse);
       return reponse;
     } catch (error : any) {
       return {error : error.error.message};

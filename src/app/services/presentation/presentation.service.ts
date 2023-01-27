@@ -32,7 +32,16 @@ export class PresentationService {
       console.log(reponse);
       return {CritereRecherche : reponse};
     } catch (error : any) {
-      return {error : error.error.message};
+      throw new Error(error);
+    }
+  }
+
+  async getPresentationById(id: number): Promise<Presentation> {
+    try {
+      let reponse = await lastValueFrom(this.httpClient.get<Presentation>('http://localhost:8080/presentation/'+id));
+      return reponse;
+    } catch (error: any) {
+      throw new Error(error);
     }
   }
 }
