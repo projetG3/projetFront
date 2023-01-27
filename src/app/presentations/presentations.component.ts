@@ -3,8 +3,6 @@ import { PresentationService } from './../services/presentation/presentation.ser
 import { Presentation } from './../models/presentation';
 import { Component } from '@angular/core';
 import { Produit } from '../models/produit';
-import {PresentationService} from "../services/presentation/presentation.service";
-import {Presentation} from "../models/presentation";
 
 
 

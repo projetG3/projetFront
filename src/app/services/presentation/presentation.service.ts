@@ -45,15 +45,6 @@ export class PresentationService {
     }
   }
 
-  async getPresentationById(critereRecherche : CritereRecherche): Promise<any> {
-    try {
-      let reponse = await lastValueFrom(this.httpClient.post<CritereRecherche>('http://localhost:8080/presentation/resultat', {nom:critereRecherche.nom, libelé:critereRecherche.libelé, voieadministrations:critereRecherche.voieadministrations, generique:critereRecherche.generique}));
-      console.log(reponse);
-      return {CritereRecherche : reponse};
-    } catch (error : any) {
-      return {error : error.error.message};
-    }
-  }
 
 
 }
