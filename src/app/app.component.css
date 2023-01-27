@@ -70,3 +70,8 @@ form:focus-within {
     background: var(--sheen-green);
 }
 
+.criterBar{
+  position: absolute;
+  margin-top: 30px;
+  z-index: 2;
+}

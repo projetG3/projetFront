@@ -22,7 +22,11 @@
                 placeholder="Chercher un produit..."
                 [value]="nomSelected"
               />
-              <button class="material-symbols-outlined" style="width: 15%" (click)="afficherCritres()">
+              <button
+                class="material-symbols-outlined"
+                style="width: 15%"
+                (click)="afficherCritres()"
+              >
                 tune
               </button>
               <button
@@ -33,43 +37,57 @@
               >
                 search
               </button>
-            </form>
 
-            <div *ngIf="displayCriteria" style="position: absolute">
-              <form class="d-flex form-inputs">
-
+              <div *ngIf="displayCriteria" class="criterBar">
                 <div class="grid p-fluid">
                   <div class="col-12 md:col-4">
-                    <div class="p-inputgroup" >
-                      <input type="text"  placeholder="par libelé..." [value]="libeleSelected">
-                      <button type="button" pButton pRipple icon="pi pi-times" styleClass="p-button-warn" (click)="resetLibele()"></button>
+                    <div class="p-inputgroup">
+                      <input
+                        type="text"
+                        placeholder="par libelé..."
+                        [value]="libeleSelected"
+                      />
+                      <button (click)="resetLibele()">X</button>
                     </div>
                   </div>
 
                   <div class="col-12 md:col-4">
-                    <div class="p-inputgroup" >
-                      <input type="text"  placeholder="par générique..." [value]="generiqueSelected">
-                      <button type="button" pButton pRipple icon="pi pi-times" styleClass="p-button-warn" (click)="resetGenerique()"></button>
+                    <div class="p-inputgroup">
+                      <input
+                        type="text"
+                        placeholder="par générique..."
+                        [value]="generiqueSelected"
+                      />
+                      <button (click)="resetGenerique()">X</button>
                     </div>
                   </div>
 
-                <p-dropdown [options]="voieAdministrations" [(ngModel)]="voieAdministrationSelected" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="par voie d'administration...">
-                  <ng-template pTemplate="selectedItem">
-                    <div class="voieAdministration-item voieAdministration-item-value" *ngIf="voieAdministrationSelected">
-                      <div>{{voieAdministrationSelected.id}}</div>
-                    </div>
-                  </ng-template>
-                  <ng-template let-voieAdministration pTemplate="item">
-                    <div >
-                      <div>{{voieAdministration.id}}</div>
-                    </div>
-                  </ng-template >
-                </p-dropdown>
-
+                  <p-dropdown
+                    [options]="voieAdministrations"
+                    [(ngModel)]="voieAdministrationSelected"
+                    optionLabel="name"
+                    [filter]="true"
+                    filterBy="name"
+                    [showClear]="true"
+                    placeholder="par voie d'administration..."
+                  >
+                    <ng-template pTemplate="selectedItem">
+                      <div
+                        class="voieAdministration-item voieAdministration-item-value"
+                        *ngIf="voieAdministrationSelected"
+                      >
+                        <div>{{ voieAdministrationSelected.id }}</div>
+                      </div>
+                    </ng-template>
+                    <ng-template let-voieAdministration pTemplate="item">
+                      <div>
+                        <div>{{ voieAdministration.id }}</div>
+                      </div>
+                    </ng-template>
+                  </p-dropdown>
                 </div>
-
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
 
           <div class="col-md">

@@ -1,7 +1,7 @@
 <div class="grid">
   <div *ngFor="let presentation of presentations">
     <div class="item card">
-      <div class="presentationNames">{{ presentation.id }}</div>
+      <div class="presentationNames">{{ presentation.codecis.nom }}</div>
       <p class="presentationDescription">{{ presentation.libelle }}</p>
       <p class="presentationDescription">
         Quantité : {{ presentation.quantitedispo }}
