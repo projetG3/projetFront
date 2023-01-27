@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Produit } from '../models/produit';
 import {PresentationService} from "../services/presentation/presentation.service";
 import {Presentation} from "../models/presentation";
 
@@ -76,11 +75,16 @@ export class PresentationsComponent {
         let presentationObjet = await this.presentation.getPresentationById(id);
         this.presentations.push(presentationObjet);
       } catch (error) {
-        console.log("PB ICIII"+error);
+        console.log(error);
       }
     });
   }
 
+  getListVoieAdministration(presentation : Presentation) {
+    let s='';
+    presentation.codecis.administrepars.forEach(admi=>s+=admi.voieadministration.id.toString()+" ");
+    return s;
+  }
 
 }
 

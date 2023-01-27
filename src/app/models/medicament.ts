@@ -15,7 +15,7 @@ export interface Medicament {
   statusbdm:string;
   numeroautorisationeuropeenne:string;
   surveillancerenforcee:boolean;
-  administrerpar:AdministrerPar[];
+  administrepars:AdministrerPar[];
   estcrerpar:EstCreerPar[];
   estdelivresous:EstDelivreSous[];
   informe:Informe[];

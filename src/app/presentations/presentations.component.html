@@ -19,7 +19,9 @@
       <p class="presentationDescription">
         Quantité : {{ presentation.quantitedispo }}
       </p>
-      <div class="voieAdmin">Voie Administration</div>
+      <div class="voieAdmin" *ngIf="presentation && presentation.codecis && presentation.codecis.administrepars && presentation.codecis.administrepars.length>0">
+        Voie Administration : {{getListVoieAdministration(presentation)}}
+      </div>
       <div class="prix">{{ presentation.prix }} €</div>
       <button [routerLink]="['/']" class="ajouterPanier">+</button>
     </div>
