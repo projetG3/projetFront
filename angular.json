@@ -65,6 +65,11 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+            "options": {
+              "browserTarget": "angular-nodejs-example:build",
+              "host": "0.0.0.0",
+              "port": 4200
+            },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
