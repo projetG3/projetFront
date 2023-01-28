@@ -7,5 +7,11 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  password="oui";
+  constructor(private auth: AuthService){
 
+  }
+  isConnected(){
+    return this.auth.isConnected;
+  }
 }

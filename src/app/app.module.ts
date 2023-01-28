@@ -12,6 +12,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {RippleModule} from 'primeng/ripple';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {PasswordModule} from 'primeng/password';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,7 +21,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PresentationsComponent } from './presentations/presentations.component';
-
+import { PresentationDetailComponent } from './presentation-detail/presentation-detail.component';
+import {AccordionModule} from 'primeng/accordion';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { PresentationsComponent } from './presentations/presentations.component'
     ConnexionComponent,
     AdminComponent,
     HomeComponent,
-    PresentationsComponent
+    PresentationsComponent,
+    PresentationDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,9 @@ import { PresentationsComponent } from './presentations/presentations.component'
     InputTextModule,
     RippleModule,
     InputNumberModule,
-    FormsModule
+    FormsModule,
+    AccordionModule,
+    PasswordModule
   ],
   bootstrap: [AppComponent]
 })

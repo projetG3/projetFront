@@ -1,17 +1,45 @@
 <div class="grid">
-  <div *ngFor="let presentation of presentations">
+  <div
+    *ngFor="let presentation of presentations | slice : first : first + rows"
+  >
     <div class="item card">
-      <div class="presentationNames">{{ presentation.codecis.nom }}</div>
-      <p class="presentationDescription">{{ presentation.libelle }}</p>
-      <p class="presentationDescription">
-        Quantité : {{ presentation.quantitedispo }}
-      </p>
-      <div class="voieAdmin" *ngIf="presentation && presentation.codecis && presentation.codecis.administrepars && presentation.codecis.administrepars.length>0">
-        Voie Administration : {{getListVoieAdministration(presentation)}}
+      <div class="presentationDescription">
+        <a alt="Description de l'image" href="/presentation/{{ presentation.id }}">
+          <h6 class="presentationNames ">
+            {{ presentation.codecis.nom | slice : 0 : 40 }}
+            {{ presentation.codecis.nom.length > 40 ? "..." : "" }}
+
+          </h6>
+        </a>
+        <div class="prix">{{ presentation.prix }} €</div>
+        <p>
+          {{ presentation.libelle | slice : 0 : 50 }}
+          {{ presentation.libelle.length > 50 ? "..." : "" }}
+        </p>
+        <p>Quantité : {{ presentation.quantitedispo }}</p>
+        <p
+          class="voieAdmin"
+          *ngIf="
+            presentation &&
+            presentation.codecis &&
+            presentation.codecis.administrepars &&
+            presentation.codecis.administrepars.length > 0
+          "
+        >
+          Voie Administration : {{ getListVoieAdministration(presentation) }}
+        </p>
       </div>
-      <div class="prix">{{ presentation.prix }} €</div>
-      <button [routerLink]="['/']" class="ajouterPanier">+</button>
+      <form class="ajouterPanier">
+        <div style="display: flex">
+          <input type="number" style="width: 10%" value="1" />
+          <button type="submit"><i class="pi pi-shopping-cart"></i></button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-<p-paginator [rows]="10" [totalRecords]="130"></p-paginator>
+<p-paginator
+  [rows]="rows"
+  [totalRecords]="presentations.length"
+  (onPageChange)="onPageChange($event)"
+></p-paginator>

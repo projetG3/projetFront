@@ -19,14 +19,14 @@ body {
     float: right;
 }
 
-button{
+button, .btn-success{
     background: var(--shamrock-green);
     border-color: transparent;
     color: #fff;
     cursor: pointer;
 }
 
-button:hover{
+button:hover, .btn-success:hover{
     background: var(--sheen-green);
 }
 
@@ -36,4 +36,8 @@ p {
   color: #000000;
 }
 
+
+h1,h2,h3,h4,h5,h6 {
+  text-transform: uppercase
+}
 

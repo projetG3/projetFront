@@ -1,3 +1,4 @@
+import { PresentationDetailComponent } from './presentation-detail/presentation-detail.component';
 import { Presentation } from './models/presentation';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'presentations', component: PresentationsComponent },
-  { path: 'panier', component: PanierComponent }
+  { path: 'panier', component: PanierComponent },
+  { path: 'presentation/:id', component: PresentationDetailComponent }
 ];
 
 @NgModule({
