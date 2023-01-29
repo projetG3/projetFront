@@ -3,7 +3,7 @@ import {Titulaire} from "./titulaire";
 
 export interface CritereRecherche {
   nom: string;
-  libelé: string;
-  voieadministrations:VoieAdministration[];
+  libelle: string;
+  voieAdministrations:String[];
   generique: string;
 }

@@ -23,11 +23,10 @@ export class PresentationService {
     }
   }
 
-  async getPrescriptionsBySearchResult(critereRecherche : CritereRecherche): Promise<any> {
+  async getPrescriptionsBySearchResult(critereRecherche : CritereRecherche): Promise<Presentation[]> {
     try {
-      let reponse = await lastValueFrom(this.httpClient.post<CritereRecherche>('http://localhost:8080/presentation/resultat', {nom:critereRecherche.nom, libelé:critereRecherche.libelé, voieadministrations:critereRecherche.voieadministrations, generique:critereRecherche.generique}));
-      console.log(reponse);
-      return {CritereRecherche : reponse};
+      let reponse = await lastValueFrom(this.httpClient.post<Presentation[]>('http://localhost:8080/presentation/resultat', {nom:critereRecherche.nom, libelle:critereRecherche.libelle, voieAdministrations:critereRecherche.voieAdministrations, generique:critereRecherche.generique}));
+      return reponse;
     } catch (error : any) {
       throw new Error(error);
     }

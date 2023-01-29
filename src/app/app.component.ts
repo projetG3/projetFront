@@ -62,14 +62,28 @@ export class AppComponent {
   resetGenerique(){
     this.generiqueSelected='';
   }
-  demanderPresentation(){
-    console.log("JE RECHERCHE !")
+  async demanderPresentation() {
+
+    /*
     this.critereRecherche={
       nom:this.nomSelected,
-      libelé:this.libeleSelected,
+      libelle:this.libeleSelected,
       generique:this.generiqueSelected,
       voieadministrations:this.voieAdministrations
     }
-    //this.presentation.getPrescriptionsBySearchResult()
+
+    {"nom":"cone","libelle":"prolypropyl", "voieAdministrations":["oral"], "generique":{"id":null,"libelle":"nebi"}}
+    */
+    this.critereRecherche = {
+      nom: "cone",
+      libelle: "prolypropyl",
+      voieAdministrations: ["oral"],
+      generique: "nebi",
+    }
+
+    console.log("JE RECHERCHE !")
+    let monResultatDeRecherche: Presentation[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
+    console.log("MON RESULTAT DE RECHERCHE = " + monResultatDeRecherche.toString());
+
   }
 }
