@@ -13,7 +13,8 @@ import {RippleModule} from 'primeng/ripple';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {PasswordModule} from 'primeng/password';
-
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,7 @@ import {AccordionModule} from 'primeng/accordion';
 
 
 @NgModule({
+  providers: [MessageService],
   declarations: [
     AppComponent,
     ConnexionComponent,
@@ -55,7 +57,8 @@ import {AccordionModule} from 'primeng/accordion';
     InputNumberModule,
     FormsModule,
     AccordionModule,
-    PasswordModule
+    PasswordModule,
+    ToastModule
   ],
   bootstrap: [AppComponent]
 })

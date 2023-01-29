@@ -1,14 +1,15 @@
+
+<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
 <div class="grid">
   <div
     *ngFor="let presentation of presentations | slice : first : first + rows"
   >
     <div class="item card">
       <div class="presentationDescription">
-        <a alt="Description de l'image" href="/presentation/{{ presentation.id }}">
-          <h6 class="presentationNames ">
+        <a href="/presentation/{{ presentation.id }}">
+          <h6 class="presentationNames">
             {{ presentation.codecis.nom | slice : 0 : 40 }}
             {{ presentation.codecis.nom.length > 40 ? "..." : "" }}
-
           </h6>
         </a>
         <div class="prix">{{ presentation.prix }} €</div>
@@ -29,9 +30,10 @@
           Voie Administration : {{ getListVoieAdministration(presentation) }}
         </p>
       </div>
-      <form class="ajouterPanier">
+
+      <form class="ajouterPanier" (ngSubmit)="addProduct(presentation.id, +quantiteCommande.value)" #form="ngForm">
         <div style="display: flex">
-          <input type="number" style="width: 10%" value="1" />
+          <input #quantiteCommande type="number" style="width: 10%" min="1" max="presentation.quantitedispo" value="1" />
           <button type="submit"><i class="pi pi-shopping-cart"></i></button>
         </div>
       </form>

@@ -1,7 +1,9 @@
+import { PanierService } from './../services/panier/panier.service';
 import { Presentation } from './../models/presentation';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PresentationService } from '../services/presentation/presentation.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-presentation-detail',
@@ -11,9 +13,12 @@ import { PresentationService } from '../services/presentation/presentation.servi
 export class PresentationDetailComponent {
   id: any;
   presentation!: Presentation;
+  message!: string;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private presentationService: PresentationService
+    private presentationService: PresentationService,
+    private panierService: PanierService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -25,12 +30,12 @@ export class PresentationDetailComponent {
             await this.presentationService.getPresentationById(+id);
         }
       } catch (error) {
-        console.log("L'erreur " + error);
+        console.log("Error lors de la recuperation de la presenation");
       }
     });
   }
 
-  objectToLiterral(object:any){
+  objectToLiterral(object: any) {
     return JSON.stringify(object);
   }
 
@@ -39,9 +44,24 @@ export class PresentationDetailComponent {
       const parsedJson = JSON.parse(json);
       return parsedJson[0];
     } catch (e) {
-      console.log(e)
       return json;
     }
   }
 
+  addProduct(produitID: number, quantiteCommande: number) {
+    if (localStorage.getItem('userId')) {
+      const idUser = localStorage.getItem('userId');
+      if (idUser) {
+        this.panierService
+          .addProduct(produitID, quantiteCommande, +idUser[1])
+          .subscribe(() => {
+            this.message = 'La produit a été ajouté au panier';
+            this.messageService.add({
+              severity: 'success',
+              summary: this.message,
+            });
+          });
+      }
+    }
+  }
 }

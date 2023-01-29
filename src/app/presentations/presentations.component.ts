@@ -1,6 +1,8 @@
+import { Presentation } from './../models/presentation';
+import { PanierService } from './../services/panier/panier.service';
 import { Component } from '@angular/core';
 import { PresentationService } from '../services/presentation/presentation.service';
-import { Presentation } from '../models/presentation';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-presentations',
@@ -11,18 +13,19 @@ export class PresentationsComponent {
   presentations: Array<Presentation> = [];
   presentationsId: Array<number> = [];
   first = 0;
-  rows = 6;
-  constructor(private presentation: PresentationService) {}
+  rows = 6; // Nombree de produit par page
+  message!: string;
+  constructor(
+    private presentation: PresentationService,
+    private panierService: PanierService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.presentationsId = [
-      3939752, 2663325, 2663360, 3454977, 3007878, 3007879, 3007880, 3025153,
-      5507078, 5507079, 5507081, 3016430, 3016431, 2697873, 2697896, 2697904,
-      2697910, 3020803, 3411169, 3634892, 3953338, 5598893, 2192305, 5814196,
-      3006798, 4980343, 4980366, 4980372, 3010880, 3989112, 3989141, 3454664,
-      3812595, 3845063, 3014176, 3014177, 3416391, 5508287, 3696597, 2226926,
-      2226932, 3998217, 3998223, 3533949, 4924451, 4189767, 4189773, 3967872,
-      5561393, 3516069,
+      3939752, 2663325, 2663360, 3454977, 3016430, 3016431, 3953338, 2192305,
+      3989112, 3989141, 3454664, 3812595, 3845063, 3014176, 3014177, 3696597,
+      3998223, 3533949, 4924451, 4189767, 4189773, 3967872, 3516069,
     ];
 
     this.presentationsId.forEach(async (id) => {
@@ -30,7 +33,7 @@ export class PresentationsComponent {
         let presentationObjet = await this.presentation.getPresentationById(id);
         this.presentations.push(presentationObjet);
       } catch (error) {
-        console.log(error);
+        console.log("Erreur lors de la récuperation de l'une des  presentations");
       }
     });
   }
@@ -43,8 +46,25 @@ export class PresentationsComponent {
     return s;
   }
 
-
-  onPageChange(event: { first: number; }) {
+  onPageChange(event: { first: number }) {
     this.first = event.first;
+  }
+
+  addProduct(produitID: number, quantiteCommande: number) {
+    if (localStorage.getItem('userId')) {
+      const idUser = localStorage.getItem('userId');
+      if (idUser) {
+        this.panierService
+          .addProduct(produitID, quantiteCommande, +idUser[1])
+          .subscribe(() => {
+            this.message = 'La produit a été ajouté au panier';
+            this.messageService.add({
+              severity: 'success',
+              summary: this.message,
+            });
+          });
+      }
+    }
+    quantiteCommande = 1;
   }
 }

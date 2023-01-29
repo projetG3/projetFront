@@ -30,7 +30,6 @@ export class ConnexionComponent implements OnInit {
     return this.loginForm.controls;
   }
   async seConnecter() {
-    console.log(this.loginForm.value);
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -47,7 +46,6 @@ export class ConnexionComponent implements OnInit {
         this.router.navigateByUrl('/admin');
     } catch(error) {
         this.isAccountInvalid = true;
-        console.log(error);
     }
   }
 

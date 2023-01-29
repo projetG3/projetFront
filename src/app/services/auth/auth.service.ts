@@ -16,15 +16,16 @@ export class AuthService {
   public async seConnecter(userInfo: Utilisateur) {
     await this.checkUser(userInfo);
     localStorage.setItem('ACCESS_TOKEN', 'access_token');
+    localStorage.setItem('userId', JSON.stringify(userInfo.id));
     this.isConnected = true;
   }
 
   public seConnecte() {
     return localStorage.getItem('ACCESS_TOKEN') !== null;
-    this.isConnected = true;
   }
   public seDdeconnecter() {
     localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('userId');
     this.isConnected = false;
   }
 

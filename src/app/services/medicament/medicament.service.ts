@@ -14,7 +14,6 @@ export class MedicamentService {
   async getAllMedicament(): Promise<any> {
       try {
         let reponse = await lastValueFrom(this.httpClient.get<Medicament[]>('http://localhost:8080/medicament/list'));
-        console.log(reponse);
         return reponse;
       } catch (error : any) {
         return {error : error.error.message};
