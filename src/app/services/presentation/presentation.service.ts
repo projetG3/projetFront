@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {lastValueFrom} from "rxjs";
 import {Presentation} from "../../models/presentation";
 import {CritereRecherche} from "../../models/critereRecherche";
+import {ResultatRecherche} from "../../models/resultatRecherche";
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,9 @@ export class PresentationService {
     }
   }
 
-  async getPrescriptionsBySearchResult(critereRecherche : CritereRecherche): Promise<Presentation[]> {
+  async getPrescriptionsBySearchResult(critereRecherche : CritereRecherche): Promise<ResultatRecherche[]> {
     try {
-      let reponse = await lastValueFrom(this.httpClient.post<Presentation[]>('http://localhost:8080/presentation/resultat', {nom:critereRecherche.nom, libelle:critereRecherche.libelle, voieAdministrations:critereRecherche.voieAdministrations, generique:critereRecherche.generique}));
+      let reponse = await lastValueFrom(this.httpClient.post<ResultatRecherche[]>('http://localhost:8080/presentation/resultat', {nom:critereRecherche.nom, libelle:critereRecherche.libelle, voieAdministrations:critereRecherche.voieAdministrations, generique:critereRecherche.generique}));
       return reponse;
     } catch (error : any) {
       throw new Error(error);

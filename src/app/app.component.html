@@ -4,9 +4,10 @@
       <div class="container-fluid"></div>
     </nav>
     <section class="header-main border-bottom bg-white">
-      <div class="container-fluid">
+      <div class="container-fluid align-content-center">
         <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-          <div class="col-md-2">
+
+          <div class="col-2 d-flex">
             <a href="#"
               ><img
                 class="d-none d-md-flex"
@@ -14,8 +15,9 @@
                 width="80%"
             /></a>
           </div>
-          <div class="col-md-8">
-            <form class="d-flex form-inputs">
+
+          <div class="col-auto justify-content-center">
+            <form class="form-inputs">
               <input
                 class="form-control"
                 type="text"
@@ -90,23 +92,45 @@
             </form>
           </div>
 
-          <div class="col-md">
+          <div class="col-2">
             <div class="item">
               <a href="/panier">
                 <h1 class="bi bi-cart"></h1>
                 <span class="notify-badge">2</span>
               </a>
             </div>
-          </div>
-
-          <div class="col-md">
-            <div *ngIf="getStatutConnection()">
-              <!-- <button class="logButton" >Se déconnecter</button> -->
+            <div *ngIf="getStatutConnection()" class="item">
               <button
                 pButton
                 class="login"
                 (click)="seDeconnecter()"
-                label="Logout"
+                label="Connecté"
+                icon="bi bi-person-check"
+              ></button>
+            </div>
+            <div *ngIf="!getStatutConnection()" class="item">
+              <button
+                pButton
+                class="login"
+                [routerLink]="['connexion']"
+                label="s'identifier"
+                icon="bi bi-person"
+              ></button>
+            </div>
+          </div>
+
+          <!--
+          <div class="col-md">
+            <div *ngIf="getStatutConnection()">
+          -->
+              <!-- <button class="logButton" >Se déconnecter</button> -->
+
+          <!--
+              <button
+                pButton
+                class="login"
+                (click)="seDeconnecter()"
+                label="se déconnecté"
                 icon="pi pi-power-off"
               ></button>
             </div>
@@ -120,6 +144,8 @@
               ></button>
             </div>
           </div>
+          -->
+
         </div>
       </div>
     </section>

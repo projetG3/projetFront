@@ -8,7 +8,7 @@ export class PanierService {
   constructor(private httpClient: HttpClient) { }
 
 
-  addProduct(produit: number, quantiteCommande: number, idCompte: number) {
+  addProduct(produit: number, quantiteCommande: number, idCompte: number): Promise<ResultatAdd> {
     const body = {
       "produit": produit,
       "quantiteCommande": quantiteCommande,

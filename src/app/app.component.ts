@@ -6,6 +6,7 @@ import {VoieAdministrationService} from "./services/voieadministration/voieadmin
 import {CritereRecherche} from "./models/critereRecherche";
 import {Presentation} from "./models/presentation";
 import {PresentationService} from "./services/presentation/presentation.service";
+import {ResultatRecherche} from "./models/resultatRecherche";
 
 @Component({
   selector: 'app-root',
@@ -82,7 +83,7 @@ export class AppComponent {
     }
 
     console.log("JE RECHERCHE !")
-    let monResultatDeRecherche: Presentation[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
+    let monResultatDeRecherche: ResultatRecherche[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
     console.log("MON RESULTAT DE RECHERCHE = " + monResultatDeRecherche.toString());
 
   }
