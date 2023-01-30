@@ -1,10 +1,11 @@
+import { Commande } from "./commande";
 import {Presentation} from "./presentation";
-import {Commande} from "./commande";
 
-export interface EstConstitueeDe {
+
+export interface Estconstitueede {
   id: number;
   presentation: Presentation;
   quantite: number;
   terminer: Boolean;
+  idcommande:Commande;
 }
-

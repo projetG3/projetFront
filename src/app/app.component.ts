@@ -7,6 +7,8 @@ import {CritereRecherche} from "./models/critereRecherche";
 import {Presentation} from "./models/presentation";
 import {PresentationService} from "./services/presentation/presentation.service";
 import {ResultatRecherche} from "./models/resultatRecherche";
+import { Observable } from 'rxjs';
+import { Commande } from './models/commande';
 
 @Component({
   selector: 'app-root',
@@ -26,9 +28,11 @@ export class AppComponent {
   voieAdministrationSelected!:VoieAdministration;
 
   critereRecherche!:CritereRecherche;
+  commandesCompte!: Observable<Commande>;
 
   async ngOnInit() {
     this.voieAdministrations = await this.voieAdministration.getVoieAdministration();
+    this.commandesCompte = this.auth.commandesCompte;
   }
 
   constructor(private auth: AuthService,private router: Router, private voieAdministration: VoieAdministrationService, private presentation: PresentationService){
@@ -87,4 +91,5 @@ export class AppComponent {
     console.log("MON RESULTAT DE RECHERCHE = " + monResultatDeRecherche.toString());
 
   }
+
 }

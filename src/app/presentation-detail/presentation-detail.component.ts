@@ -1,5 +1,5 @@
-import { PanierService } from './../services/panier/panier.service';
-import { Presentation } from './../models/presentation';
+import { PanierService } from '../services/panier/panier.service';
+import { Presentation } from '../models/presentation';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PresentationService } from '../services/presentation/presentation.service';
@@ -54,7 +54,7 @@ export class PresentationDetailComponent {
       if (idUser) {
         this.panierService
           .addProduct(produitID, quantiteCommande, +idUser[1])
-          .subscribe(() => {
+          .then(() => {
             this.message = 'La produit a été ajouté au panier';
             this.messageService.add({
               severity: 'success',

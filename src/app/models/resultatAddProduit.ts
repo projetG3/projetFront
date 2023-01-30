@@ -1,8 +1,10 @@
 import {Presentation} from "./presentation";
 import {Commande} from "./commande";
-import {EstConstitueeDe} from "./estConstitueeDe";
+import { Estconstitueede } from "./estconstitueede";
 
-export interface ResultatRecherche {
+
+
+export interface ResultatAddProduit {
   commande : Commande;
-  estconstitueedes: EstConstitueeDe[];
+  estconstitueedes: Estconstitueede[];
 }

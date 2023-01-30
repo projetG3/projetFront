@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Utilisateur } from '../../models/utilisateur';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Compte } from 'src/app/models/compte';
+import { Commande } from 'src/app/models/commande';
+import { PanierService } from '../panier/panier.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   isConnected!: boolean;
-  constructor(private httpClient: HttpClient) {}
+  commandesCompte!:Observable<Commande>;
+
+  constructor(private httpClient: HttpClient, private panier: PanierService) {}
 
   public async seConnecter(userInfo: Utilisateur) {
     await this.checkUser(userInfo);
@@ -37,9 +41,13 @@ export class AuthService {
           password: user.password,
         })
       );
+      console.log("avant")
+      let reponseCommande = await this.panier.getCommandeCourante(user.id)
+      this.commandesCompte = of(reponseCommande);
       return { compte: reponse };
     } catch (error: any) {
       throw new Error(error);
     }
   }
+
 }
