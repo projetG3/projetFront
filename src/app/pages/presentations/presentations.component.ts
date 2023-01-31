@@ -1,8 +1,9 @@
-import { Presentation } from '../models/presentation';
-import { PanierService } from '../services/panier/panier.service';
+import { Presentation } from '../../models/presentation';
+import { PanierService } from '../../services/panier.service';
 import { Component } from '@angular/core';
-import { PresentationService } from '../services/presentation/presentation.service';
+import { PresentationService } from '../../services/presentation.service';
 import { MessageService } from 'primeng/api';
+import {ResultatRecherche} from "../../models/resultatRecherche";
 
 @Component({
   selector: 'app-presentations',
@@ -10,11 +11,12 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./presentations.component.css'],
 })
 export class PresentationsComponent {
-  presentations: Array<Presentation> = [];
+  mesPresentations: Array<Presentation> = [];
   presentationsId: Array<number> = [];
   first = 0;
   rows = 6; // Nombree de produit par page
   message!: string;
+
   constructor(
     private presentation: PresentationService,
     private panierService: PanierService,
@@ -22,20 +24,11 @@ export class PresentationsComponent {
   ) {}
 
   ngOnInit() {
-    this.presentationsId = [
-      3939752, 2663325, 2663360, 3454977, 3016430, 3016431, 3953338, 2192305,
-      3989112, 3989141, 3454664, 3812595, 3845063, 3014176, 3014177, 3696597,
-      3998223, 3533949, 4924451, 4189767, 4189773, 3967872, 3516069,
-    ];
 
-    this.presentationsId.forEach(async (id) => {
-      try {
-        let presentationObjet = await this.presentation.getPresentationById(id);
-        this.presentations.push(presentationObjet);
-      } catch (error) {
-        console.log("Erreur lors de la récuperation de l'une des  presentations");
-      }
+    this.presentation.presentationsCourantes$.subscribe(data => {
+      this.mesPresentations = data;
     });
+
   }
 
   getListVoieAdministration(presentation: Presentation) {
