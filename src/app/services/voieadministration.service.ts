@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { VoieAdministration } from '../../models/voieAdministration';
+import { VoieAdministration } from '../models/voieAdministration';
 
 @Injectable({
   providedIn: 'root',

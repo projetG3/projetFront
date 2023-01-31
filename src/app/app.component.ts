@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthService } from './services/auth/auth.service';
+import { AuthService } from './services/auth.service';
 import {VoieAdministration} from "./models/voieAdministration";
-import {VoieAdministrationService} from "./services/voieadministration/voieadministration.service";
+import {VoieAdministrationService} from "./services/voieadministration.service";
 import {CritereRecherche} from "./models/critereRecherche";
 import {Presentation} from "./models/presentation";
-import {PresentationService} from "./services/presentation/presentation.service";
+import {PresentationService} from "./services/presentation.service";
 import {ResultatRecherche} from "./models/resultatRecherche";
 import { Observable } from 'rxjs';
 import { Commande } from './models/commande';
@@ -22,13 +22,20 @@ export class AppComponent {
 
   voieAdministrations!:VoieAdministration[];
 
-  nomSelected:string='';
-  libeleSelected:string='';
-  generiqueSelected:string='';
+  //nomSelected:string='';
+  //libeleSelected:string='';
+  //generiqueSelected:string='';
   voieAdministrationSelected!:VoieAdministration;
 
   critereRecherche!:CritereRecherche;
   commandesCompte!: Observable<Commande>;
+
+  //---mes inputs----
+  libellePresentation : string ='';
+  libelleMedicament : string ='';
+  generique : string ='';
+  mesVoiesAdministrations : string[] =[];
+
 
   async ngOnInit() {
     this.voieAdministrations = await this.voieAdministration.getVoieAdministration();
@@ -55,35 +62,32 @@ export class AppComponent {
   afficherCritres(){
     this.displayCriteria=!this.displayCriteria;
   }
-  onLibeleChange(value:string){
-    this.libeleSelected=value;
+  resetLibellePresentation(){
+    this.libellePresentation='';
   }
-  onGeneriqueChange(value:string){
-    this.generiqueSelected=value;
-  }
-  resetLibele(){
-    this.libeleSelected='';
+  resetLibelleMedicament(){
+    this.libelleMedicament='';
   }
   resetGenerique(){
-    this.generiqueSelected='';
+    this.generique='';
   }
   async demanderPresentation() {
+    this.displayCriteria=false;
 
-    /*
-    this.critereRecherche={
-      nom:this.nomSelected,
-      libelle:this.libeleSelected,
-      generique:this.generiqueSelected,
-      voieadministrations:this.voieAdministrations
+
+
+    this.critereRecherche = {
+      libellePresentation: "cone",
+      libelleMedicament: "prolypropyl",
+      generique: "nebi",
+      voieAdministrations: ["oral"],
     }
 
-    {"nom":"cone","libelle":"prolypropyl", "voieAdministrations":["oral"], "generique":{"id":null,"libelle":"nebi"}}
-    */
     this.critereRecherche = {
-      nom: "cone",
-      libelle: "prolypropyl",
+      libellePresentation: this.libellePresentation,
+      libelleMedicament: this.libelleMedicament,
+      generique: this.generique,
       voieAdministrations: ["oral"],
-      generique: "nebi",
     }
 
     console.log("JE RECHERCHE !")

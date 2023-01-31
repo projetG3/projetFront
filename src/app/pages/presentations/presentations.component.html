@@ -1,9 +1,8 @@
 
 <p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+
 <div class="grid">
-  <div
-    *ngFor="let presentation of presentations | slice : first : first + rows"
-  >
+  <div *ngFor="let presentation of mesPresentations | slice : first : first + rows">
     <div class="item card">
       <div class="presentationDescription">
         <a href="/presentation/{{ presentation.id }}">
@@ -42,6 +41,8 @@
 </div>
 <p-paginator
   [rows]="rows"
-  [totalRecords]="presentations.length"
+  [totalRecords]="mesPresentations.length"
   (onPageChange)="onPageChange($event)"
 ></p-paginator>
+
+
