@@ -3,11 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, Observable } from 'rxjs';
 import { ResultatAddProduit } from 'src/app/models/resultatAddProduit';
+import { PanierComponent } from 'src/app/pages/panier/panier.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PanierService {
+
+  panier : Commande | undefined;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,7 +32,7 @@ export class PanierService {
     }
   }
 
-  async getCommandeCourante(idCompte: number): Promise<Commande> {
+/*  async getCommandeCourante(idCompte: number): Promise<Commande> {
     let body = idCompte;
     try{
       let resultatAddProduit = await lastValueFrom(this.httpClient.post<Commande>('http://localhost:8080/commande/commandecourante', body, { headers: { 'Content-Type': 'application/json' }}));
@@ -37,6 +40,17 @@ export class PanierService {
     }catch(error: any){
       throw new Error(error);
     }
+  }*/
+
+  getCommandeEnCours(commandelist:Commande[]) {
+    let resultCommande : Commande | undefined = undefined;
+    commandelist.forEach((commande) => {
+      if(commande.status === 'en cours'){
+        resultCommande = commande;
+      }
+    });
+    this.panier = resultCommande;
+    console.log(this.panier);
   }
 
 

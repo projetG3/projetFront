@@ -21,7 +21,8 @@ export class ConnexionComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private panier: PanierService
   ) {}
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -46,12 +47,7 @@ export class ConnexionComponent implements OnInit {
     try {
       console.log("avant check user");
         let compte : Compte = await this.authService.checkUser(user);
-        console.log(compte);
-        console.log("apres check user");
-        let obj : Commande = compte.commandes[0];
-        console.log("avant log");
-        console.log(obj);
-        console.log("apris log");
+        this.panier.getCommandeEnCours(compte.commandes);
         this.isAccountInvalid = false;
         this.authService.seConnecter(this.loginForm.value);
         this.router.navigateByUrl('/admin');
@@ -59,5 +55,4 @@ export class ConnexionComponent implements OnInit {
         this.isAccountInvalid = true;
     }
   }
-
 }
