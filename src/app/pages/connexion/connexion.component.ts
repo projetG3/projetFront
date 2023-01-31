@@ -44,7 +44,6 @@ export class ConnexionComponent implements OnInit {
     };
 
     try {
-      console.log("avant check user");
         let compte : Compte = await this.authService.checkUser(user);
         this.panier.getCommandeEnCours(compte.commandes);
         this.isAccountInvalid = false;
