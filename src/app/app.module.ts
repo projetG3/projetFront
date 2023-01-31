@@ -21,8 +21,8 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PresentationsComponent } from './presentations/presentations.component';
-import { PresentationDetailComponent } from './presentation-detail/presentation-detail.component';
+import { PresentationsComponent } from './pages/presentations/presentations.component';
+import { PresentationDetailComponent } from './pages/presentation-detail/presentation-detail.component';
 import {AccordionModule} from 'primeng/accordion';
 
 

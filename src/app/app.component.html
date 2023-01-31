@@ -1,153 +1,130 @@
 <div *ngIf="!isRouteConnexion" class="navbarDiv">
   <header class="section-header">
+    <!--
     <nav class="navbar navbar-dark navbar-expand p-0 bg-dark">
       <div class="container-fluid"></div>
     </nav>
+    -->
     <section class="header-main border-bottom bg-white">
-      <div class="container-fluid align-content-center">
-        <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-
-          <div class="col-2 d-flex">
-            <a href="#"
-              ><img
-                class="d-none d-md-flex"
-                src="assets/image/2-rogner.png"
-                width="80%"
-            /></a>
+      <div class="row p-2 pt-3 pb-3 d-flex align-items-center container-fluid align-content-center">
+        <div class="col-2 d-flex " >
+          <a href="#"
+          ><img
+            class="d-none d-md-flex"
+            src="assets/image/2-rogner.png"
+            width="80%"
+          /></a>
+        </div>
+        <div class="col-7 align-content-center" >
+          <form class="form-inputs">
+            <input
+              class="form-control"
+              type="text"
+              placeholder="Recherche par libellé de produit..."
+              [value]="libellePresentation"
+            />
+            <button
+              class="material-symbols-outlined"
+              style="width: 15%"
+              (click)="afficherCritres()"
+            >
+              tune
+            </button>
+            <button
+              (click)="demanderPresentation()"
+              [routerLink]="['presentations']"
+              class="material-symbols-outlined"
+              style="width: 15%"
+            >
+              search
+            </button>
+          </form>
+        </div>
+        <div class="col-3 d-flex align-items-center container-fluid align-content-center" >
+          <div class="item">
+            <a href="/panier">
+              <h1 class="bi bi-cart"></h1>
+              <span class="notify-badge">0{{ commandesCompte | async }}</span>
+            </a>
           </div>
-
-          <div class="col-auto justify-content-center">
-            <form class="form-inputs">
-              <input
-                class="form-control"
-                type="text"
-                placeholder="Chercher un produit..."
-                [value]="nomSelected"
-              />
-              <button
-                class="material-symbols-outlined"
-                style="width: 15%"
-                (click)="afficherCritres()"
-              >
-                tune
-              </button>
-              <button
-                (click)="demanderPresentation()"
-                [routerLink]="['presentations']"
-                class="material-symbols-outlined"
-                style="width: 15%"
-              >
-                search
-              </button>
-
-              <div *ngIf="displayCriteria" class="criterBar">
-                <div class="grid p-fluid">
-                  <div class="col-12 md:col-4">
-                    <div class="p-inputgroup">
-                      <input
-                        type="text"
-                        placeholder="par libelé..."
-                        [value]="libeleSelected"
-                      />
-                      <button (click)="resetLibele()">X</button>
-                    </div>
-                  </div>
-
-                  <div class="col-12 md:col-4">
-                    <div class="p-inputgroup">
-                      <input
-                        type="text"
-                        placeholder="par générique..."
-                        [value]="generiqueSelected"
-                      />
-                      <button (click)="resetGenerique()">X</button>
-                    </div>
-                  </div>
-
-                  <p-dropdown
-                    [options]="voieAdministrations"
-                    [(ngModel)]="voieAdministrationSelected"
-                    optionLabel="name"
-                    [filter]="true"
-                    filterBy="name"
-                    [showClear]="true"
-                    placeholder="par voie d'administration..."
-                  >
-                    <ng-template pTemplate="selectedItem">
-                      <div
-                        class="voieAdministration-item voieAdministration-item-value"
-                        *ngIf="voieAdministrationSelected"
-                      >
-                        <div>{{ voieAdministrationSelected.id }}</div>
-                      </div>
-                    </ng-template>
-                    <ng-template let-voieAdministration pTemplate="item">
-                      <div>
-                        <div>{{ voieAdministration.id }}</div>
-                      </div>
-                    </ng-template>
-                  </p-dropdown>
-                </div>
-              </div>
-            </form>
+          <div class="item" *ngIf="getStatutConnection()">
+            <button
+              pButton
+              class="login"
+              (click)="seDeconnecter()"
+              label="Connecté"
+              icon="bi bi-person-check"
+            ></button>
           </div>
-
-          <div class="col-2">
-            <div class="item">
-              <a href="/panier">
-                <h1 class="bi bi-cart"></h1>
-                <span class="notify-badge">{{ commandesCompte | async }}</span>
-              </a>
-            </div>
-            <div *ngIf="getStatutConnection()" class="item">
-              <button
-                pButton
-                class="login"
-                (click)="seDeconnecter()"
-                label="Connecté"
-                icon="bi bi-person-check"
-              ></button>
-            </div>
-            <div *ngIf="!getStatutConnection()" class="item">
-              <button
-                pButton
-                class="login"
-                [routerLink]="['connexion']"
-                label="s'identifier"
-                icon="bi bi-person"
-              ></button>
-            </div>
+          <div class="item" *ngIf="!getStatutConnection()">
+            <button
+              pButton
+              class="login"
+              [routerLink]="['connexion']"
+              label="s'identifier"
+              icon="bi bi-person"
+            ></button>
           </div>
-
-          <!--
-          <div class="col-md">
-            <div *ngIf="getStatutConnection()">
-          -->
-              <!-- <button class="logButton" >Se déconnecter</button> -->
-
-          <!--
-              <button
-                pButton
-                class="login"
-                (click)="seDeconnecter()"
-                label="se déconnecté"
-                icon="pi pi-power-off"
-              ></button>
-            </div>
-            <div *ngIf="!getStatutConnection()">
-              <button
-                pButton
-                class="login"
-                [routerLink]="['connexion']"
-                label="Login"
-                icon="pi pi-power-off"
-              ></button>
-            </div>
-          </div>
-          -->
 
         </div>
       </div>
+
+      <div *ngIf="displayCriteria" class="row input-group align-content-center">
+        <form class="col-4 " >
+          <p>Recherche avancée</p>
+          <div class="input-group">
+            <label>par nom de présentation </label>
+            <input style="border: 1px solid black" type="text" placeholder="saisir nom présentation..." [(ngModel)]="libellePresentation" name="libellePresentation" class="form-control">
+            <div class="input-group-append">
+              <button class="item" (click)="resetLibellePresentation()">x</button>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>par nom de médicament </label>
+            <input style="border: 1px solid black" type="text" placeholder="saisir nom médicament..." [(ngModel)]="libelleMedicament" name="libelleMedicament" class="form-control">
+            <div class="input-group-append">
+              <button class="item" (click)="resetLibelleMedicament()">x</button>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>par nom de générique </label>
+            <input style="border: 1px solid black" type="text" placeholder="saisir nom générique..." [(ngModel)]="generique" name="generique" class="form-control">
+            <div class="input-group-append">
+              <button class="item" (click)="resetGenerique()">x</button>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>par voie d'administration </label>
+            <p-dropdown
+              [options]="voieAdministrations"
+              [(ngModel)]="voieAdministrationSelected"
+              optionLabel="name"
+              [filter]="true"
+              filterBy="name"
+              [showClear]="true"
+              placeholder="par voie d'administration..."
+            >
+              <ng-template pTemplate="selectedItem">
+                <div
+                  class="voieAdministration-item voieAdministration-item-value"
+                  *ngIf="voieAdministrationSelected"
+                >
+                  <div>{{ voieAdministrationSelected.id }}</div>
+                </div>
+              </ng-template>
+              <ng-template let-voieAdministration pTemplate="item">
+                <div>
+                  <div>{{ voieAdministration.id }}</div>
+                </div>
+              </ng-template>
+            </p-dropdown>
+            </div>
+          </form>
+        </div>
+
     </section>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -168,7 +145,7 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
-                >Accueil</a
+              >Accueil</a
               >
             </li>
             <li class="nav-item dropdown">
@@ -196,6 +173,12 @@
         </div>
       </div>
     </nav>
+
   </header>
 </div>
+
 <router-outlet></router-outlet>
+
+
+
+

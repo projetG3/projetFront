@@ -22,7 +22,7 @@ export class PanierService {
     this.dataSubject.next(this.panier);
   }
 
-  async addProduct(produit: number, quantiteCommande: number, idCompte: number): Promise<ResultatAddProduit> {
+  async addProduct(produit: number, quantiteCommande: number, idCompte: number): Promise<Commande> {
     const body = {
       "produit": produit,
       "quantiteCommande": quantiteCommande,
@@ -30,7 +30,8 @@ export class PanierService {
     };
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
     try{
-      let resultatAddProduit = await lastValueFrom(this.httpClient.post<ResultatAddProduit>('http://localhost:8080/presentation/resultat', body));
+      let resultatAddProduit = await lastValueFrom(this.httpClient.post<Commande>('http://localhost:8080/presentation/resultat', body));
+      this.panier = resultatAddProduit;
       return resultatAddProduit;
     }catch(error: any){
       throw new Error(error);

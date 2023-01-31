@@ -1,33 +1,33 @@
 
 <p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+
 <div class="grid">
-  <div
-    *ngFor="let presentation of presentations | slice : first : first + rows"
-  >
+  <div *ngFor="let presentation of mesResultatDeRecherche | slice : first : first + rows">
     <div class="item card">
       <div class="presentationDescription">
         <a href="/presentation/{{ presentation.id }}">
           <h6 class="presentationNames">
-            {{ presentation.codecis.nom | slice : 0 : 40 }}
-            {{ presentation.codecis.nom.length > 40 ? "..." : "" }}
+            {{ presentation.libelleMedicament | slice : 0 : 40 }}
+            {{ presentation.libelleMedicament.length > 40 ? "..." : "" }}
           </h6>
         </a>
         <div class="prix">{{ presentation.prix }} €</div>
         <p>
-          {{ presentation.libelle | slice : 0 : 50 }}
-          {{ presentation.libelle.length > 50 ? "..." : "" }}
+          {{ presentation.libellePresentation | slice : 0 : 50 }}
+          {{ presentation.libellePresentation.length > 50 ? "..." : "" }}
         </p>
-        <p>Quantité : {{ presentation.quantitedispo }}</p>
+        <p>Quantité : {{ presentation.quantite }}</p>
         <p
           class="voieAdmin"
           *ngIf="
             presentation &&
-            presentation.codecis &&
-            presentation.codecis.administrepars &&
-            presentation.codecis.administrepars.length > 0
+            presentation.typeDeVoie &&
+            presentation.typeDeVoie.length > 0
           "
         >
-          Voie Administration : {{ getListVoieAdministration(presentation) }}
+          Voie Administration :
+          {{ presentation.typeDeVoie | slice : 0 : 40 }}
+          {{ presentation.typeDeVoie.length > 40 ? "..." : "" }}
         </p>
       </div>
 
@@ -42,6 +42,8 @@
 </div>
 <p-paginator
   [rows]="rows"
-  [totalRecords]="presentations.length"
+  [totalRecords]="mesResultatDeRecherche.length"
   (onPageChange)="onPageChange($event)"
 ></p-paginator>
+
+

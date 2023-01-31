@@ -1,9 +1,11 @@
 export interface ResultatRecherche {
+  id: number;
+  libellePresentation:string;
+  libelleMedicament:string
+  generique:string;
   quantite: number;
-  nomMedicament: string;
-  typedevoie: string;
-  libellePresentation: string;
-  codeCIP7: number;
+  prix:number;
+  typeDeVoie: string;
 }
 
 

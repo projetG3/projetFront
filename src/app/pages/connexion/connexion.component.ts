@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { Commande } from 'src/app/models/commande';
 import { Compte } from 'src/app/models/compte';
 import { Presentation } from 'src/app/models/presentation';
-import { PanierService } from 'src/app/services/panier/panier.service';
-
 import { Utilisateur } from '../../models/utilisateur';
-import { AuthService } from './../../services/auth/auth.service';
+import { AuthService } from '../../services/auth.service';
+import {PanierService} from "../../services/panier.service";
 
 @Component({
   selector: 'app-connexion',
@@ -45,7 +44,6 @@ export class ConnexionComponent implements OnInit {
     };
 
     try {
-      console.log("avant check user");
         let compte : Compte = await this.authService.checkUser(user);
         this.panier.getCommandeEnCours(compte.commandes);
         this.isAccountInvalid = false;

@@ -2,8 +2,9 @@ import {VoieAdministration} from "./voieAdministration";
 import {Titulaire} from "./titulaire";
 
 export interface CritereRecherche {
-  nom: string;
-  libelle: string;
-  voieAdministrations:String[];
+  libellePresentation: string;
+  libelleMedicament: string;
   generique: string;
+  voieAdministrations:String[];
+
 }

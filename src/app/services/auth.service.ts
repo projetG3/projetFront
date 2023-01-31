@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Utilisateur } from '../../models/utilisateur';
+import { Utilisateur } from '../models/utilisateur';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Compte } from 'src/app/models/compte';
 import { Commande } from 'src/app/models/commande';
-import { PanierService } from '../panier/panier.service';
+import { PanierService } from './panier.service';
 
 @Injectable({
   providedIn: 'root',
