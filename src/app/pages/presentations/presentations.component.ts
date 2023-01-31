@@ -11,7 +11,7 @@ import {ResultatRecherche} from "../../models/resultatRecherche";
   styleUrls: ['./presentations.component.css'],
 })
 export class PresentationsComponent {
-  mesPresentations: Array<Presentation> = [];
+  mesResultatDeRecherche: Array<ResultatRecherche> = [];
   presentationsId: Array<number> = [];
   first = 0;
   rows = 6; // Nombree de produit par page
@@ -24,11 +24,9 @@ export class PresentationsComponent {
   ) {}
 
   ngOnInit() {
-
     this.presentation.presentationsCourantes$.subscribe(data => {
-      this.mesPresentations = data;
+      this.mesResultatDeRecherche = data;
     });
-
   }
 
   getListVoieAdministration(presentation: Presentation) {

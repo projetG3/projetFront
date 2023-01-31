@@ -74,14 +74,13 @@ export class AppComponent {
   async demanderPresentation() {
     this.displayCriteria=false;
 
-
-
+    /*
     this.critereRecherche = {
       libellePresentation: "cone",
       libelleMedicament: "prolypropyl",
       generique: "nebi",
       voieAdministrations: ["oral"],
-    }
+    }*/
 
     this.critereRecherche = {
       libellePresentation: this.libellePresentation,
@@ -92,7 +91,8 @@ export class AppComponent {
 
     console.log("JE RECHERCHE !")
     let monResultatDeRecherche: ResultatRecherche[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
-    console.log("MON RESULTAT DE RECHERCHE = " + monResultatDeRecherche.toString());
+    console.log("MON RESULTAT DE RECHERCHE = ");
+    console.log(monResultatDeRecherche);
 
   }
 
