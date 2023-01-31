@@ -1,4 +1,3 @@
-import { Commande } from "./commande";
 import {Presentation} from "./presentation";
 
 

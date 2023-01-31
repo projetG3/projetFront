@@ -1,7 +1,4 @@
-import {Compte} from "./compte";
-import { Estconstitueede } from './estConstitueeDe';
-
-
+import { Estconstitueede } from "./estConstitueeDe";
 
 export interface Commande {
   id:number;
