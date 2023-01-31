@@ -44,7 +44,7 @@
           <div class="item">
             <a href="/panier">
               <h1 class="bi bi-cart"></h1>
-              <span class="notify-badge">0{{ commandesCompte | async }}</span>
+              <span class="notify-badge"> {{getNbProdPanier()}}{{ commandesCompte | async }}</span>
             </a>
           </div>
           <div class="item" *ngIf="getStatutConnection()">
