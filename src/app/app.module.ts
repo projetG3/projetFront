@@ -24,17 +24,20 @@ import { HomeComponent } from './pages/home/home.component';
 import { PresentationsComponent } from './pages/presentations/presentations.component';
 import { PresentationDetailComponent } from './pages/presentation-detail/presentation-detail.component';
 import {AccordionModule} from 'primeng/accordion';
+import { PanierComponent } from './pages/panier/panier.component';
+import { PanierService } from './services/panier.service';
 
 
 @NgModule({
-  providers: [MessageService],
+  providers: [MessageService, PanierService],
   declarations: [
     AppComponent,
     ConnexionComponent,
     AdminComponent,
     HomeComponent,
     PresentationsComponent,
-    PresentationDetailComponent
+    PresentationDetailComponent,
+    PanierComponent
   ],
   imports: [
     BrowserModule,
