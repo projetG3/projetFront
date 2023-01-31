@@ -33,7 +33,7 @@ export class AuthService {
     this.isConnected = false;
   }
 
-  async checkUser(user: Utilisateur): Promise<any> {
+  async checkUser(user: Utilisateur): Promise<Compte> {
     try {
       let reponse = await lastValueFrom(
         this.httpClient.post<Compte>('http://localhost:8080/compte/auth', {
@@ -41,10 +41,9 @@ export class AuthService {
           password: user.password,
         })
       );
-      console.log("avant")
-      let reponseCommande = await this.panier.getCommandeCourante(user.id)
-      this.commandesCompte = of(reponseCommande);
-      return { compte: reponse };
+      //let reponseCommande = await this.panier.getCommandeCourante(user.id)
+      //this.commandesCompte = of(reponseCommande);
+      return reponse;
     } catch (error: any) {
       throw new Error(error);
     }

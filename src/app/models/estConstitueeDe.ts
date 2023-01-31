@@ -7,5 +7,5 @@ export interface Estconstitueede {
   presentation: Presentation;
   quantite: number;
   terminer: Boolean;
-  idcommande:Commande;
+  //idcommande:Commande;
 }
