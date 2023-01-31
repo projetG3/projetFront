@@ -1,6 +1,7 @@
 import { Estconstitueede } from "./estconstitueede";
 
 export interface Commande {
+  forEach(arg0: any);
   id:number;
   dateheurecommande:Date;
   status:string;

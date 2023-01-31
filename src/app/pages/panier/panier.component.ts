@@ -32,4 +32,8 @@ export class PanierComponent implements OnInit {
     return -1;
   }
 
+  updateQuantite(idEstConstitueede : number){
+    console.log(idEstConstitueede);
+  }
+
 }
