@@ -1,3 +1,5 @@
+<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+
 <div class="container py-5 h-100">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="col">
@@ -8,7 +10,7 @@
             <div class="infoPanier">
               <div>
                 <h1 class="mb-1">Mon Panier</h1>
-                <p class="mb-0">{{this.panier?.estconstitueedes?.length}} items dans le panier</p>
+                <p class="mb-0">{{this.panier?.estconstitueedes ? this.panier?.estconstitueedes?.length : 0}} items dans le panier</p>
               </div>
               <div>
                 <button class="validPanier" style="border-radius:10px" (click)="validerCommande()">Valider mon panier ✅</button>

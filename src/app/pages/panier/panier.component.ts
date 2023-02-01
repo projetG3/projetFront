@@ -4,11 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { PanierService } from 'src/app/services/panier.service';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom, Observable, of } from 'rxjs';
-import { Utilisateur } from 'src/app/models/utilisateur';
 import { Estconstitueede } from 'src/app/models/estConstitueeDe';
 import { Presentation } from 'src/app/models/presentation';
 import { Router } from '@angular/router';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-panier',
@@ -18,7 +17,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 export class PanierComponent implements OnInit {
 
   panier!: Commande | undefined;
-  constructor(private panierService: PanierService, private httpClient: HttpClient, private router: Router) {}
+  constructor(private panierService: PanierService, private httpClient: HttpClient, private router: Router, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.panierService.panier$.subscribe((panier: Commande | undefined) => (this.panier = panier));
@@ -33,9 +32,8 @@ export class PanierComponent implements OnInit {
     let total=0
     if(this.panier){
       this.panier.estconstitueedes.forEach((estconstitueede) => total += (estconstitueede.quantite * estconstitueede.presentation.prix)  )
-      return total;
     }
-    return -1;
+    return total;
   }
 
   async updateQuantite(constitueedeID : number){
@@ -84,8 +82,12 @@ export class PanierComponent implements OnInit {
           if(confirm(text)){
             console.log("confirmer");
             await lastValueFrom(this.httpClient.get<Boolean>('http://localhost:8080/commande/validerforce/' + user + '/' + this.panier!.id));
+            this.panier = undefined;
             localStorage.setItem('panier', '');
-            this.router.navigateByUrl('/home');
+            this.messageService.add({
+              severity: 'success',
+              summary: "Commande validée",
+            });
           }
         }
         //ensuite, si la liste n'est pas vide alors on affiche les produits pour lesquels il manque des stock et on demande à l'utilisateur s'il veut tout de même valider sa commande. Deux cas :
