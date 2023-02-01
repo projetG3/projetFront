@@ -2,23 +2,6 @@
   <h1>Bienvenue sur Gromed 💊</h1>
 </div>
 
-<div *ngIf="!isConnected()" class="card profil" >
-  <h1>Mon profil</h1>
-  <h1 class="pi pi-user"></h1>
-  <form class="coord">
-    <h5>Nom</h5>
-    <input type="text">
-    <h5>Prenom</h5>
-    <input type="text">
-    <h5>Etablissement</h5>
-    <input type="text" disabled="disabled" value="Mon etablissement">
-    <br>
-    <br>
-    <input class="btn btn-success" type="submit" value="Enregistrer les modifications">
-  </form>
-
-</div>
-
 
 <div *ngIf="isConnected()" class="card profil" >
   <h1>Connectez-vous</h1>
