@@ -28,10 +28,11 @@ export class PanierService {
       "quantiteCommande": quantiteCommande,
       "idCompte": idCompte
     };
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:8080  ' })};
     try{
-      let resultatAddProduit = await lastValueFrom(this.httpClient.post<Commande>('http://localhost:8080/presentation/resultat', body));
+      let resultatAddProduit = await lastValueFrom(this.httpClient.post<Commande>('http://localhost:8080/commande/addProduct', body));
       this.panier = resultatAddProduit;
+      localStorage.setItem('panier',JSON.stringify(resultatAddProduit));
       return resultatAddProduit;
     }catch(error: any){
       throw new Error(error);
