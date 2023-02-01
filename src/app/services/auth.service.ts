@@ -3,7 +3,7 @@ import { Utilisateur } from '../models/utilisateur';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { lastValueFrom } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Compte } from 'src/app/models/compte';
 import { Commande } from 'src/app/models/commande';
 import { PanierService } from './panier.service';
@@ -35,11 +35,12 @@ export class AuthService {
 
   async checkUser(user: Utilisateur): Promise<Compte> {
     try {
+      const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })};
       let reponse = await lastValueFrom(
         this.httpClient.post<Compte>('http://localhost:8080/compte/auth', {
           id: user.id,
           password: user.password,
-        })
+        }, httpOptions)
       );
       //let reponseCommande = await this.panier.getCommandeCourante(user.id)
       //this.commandesCompte = of(reponseCommande);
