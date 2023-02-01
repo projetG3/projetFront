@@ -20,8 +20,9 @@
             <input
               class="form-control"
               type="text"
-              placeholder="Recherche par libellé de produit..."
-              [value]="libellePresentation"
+              [(ngModel)]="libellePresentation"
+              (search)="demanderPresentation()"
+              placeholder="Recherche un nom de présentation..."
             />
             <button
               class="material-symbols-outlined"
@@ -69,61 +70,49 @@
         </div>
       </div>
 
-      <div *ngIf="displayCriteria" class="row input-group align-content-center">
-        <form class="col-4 " >
-          <p>Recherche avancée</p>
-          <div class="input-group">
-            <label>par nom de présentation </label>
-            <input style="border: 1px solid black" type="text" placeholder="saisir nom présentation..." [(ngModel)]="libellePresentation" name="libellePresentation" class="form-control">
-            <div class="input-group-append">
-              <button class="item" (click)="resetLibellePresentation()">x</button>
+      <div *ngIf="displayCriteria" class="row align-content-center">
+        <div class="col-2"></div>
+        <div class="col-7">
+          <form class="">
+            <p>Recherche avancée</p>
+            <div class="input-group">
+              <label>par nom de présentation </label>
+              <input style="border: 1px solid black" type="text" placeholder="saisir nom présentation..." [(ngModel)]="libellePresentation" name="libellePresentation" class="form-control">
+              <div class="input-group-append">
+                <button class="item" (click)="resetLibellePresentation()">x</button>
+              </div>
             </div>
-          </div>
 
-          <div class="input-group">
-            <label>par nom de médicament </label>
-            <input style="border: 1px solid black" type="text" placeholder="saisir nom médicament..." [(ngModel)]="libelleMedicament" name="libelleMedicament" class="form-control">
-            <div class="input-group-append">
-              <button class="item" (click)="resetLibelleMedicament()">x</button>
+            <div class="input-group">
+              <label>par nom de médicament </label>
+              <input style="border: 1px solid black" type="text" placeholder="saisir nom médicament..." [(ngModel)]="libelleMedicament" name="libelleMedicament" class="form-control">
+              <div class="input-group-append">
+                <button class="item" (click)="resetLibelleMedicament()">x</button>
+              </div>
             </div>
-          </div>
 
-          <div class="input-group">
-            <label>par nom de générique </label>
-            <input style="border: 1px solid black" type="text" placeholder="saisir nom générique..." [(ngModel)]="generique" name="generique" class="form-control">
-            <div class="input-group-append">
-              <button class="item" (click)="resetGenerique()">x</button>
+            <div class="input-group">
+              <label>par nom de générique </label>
+              <input style="border: 1px solid black" type="text" placeholder="saisir nom générique..." [(ngModel)]="generique" name="generique" class="form-control">
+              <div class="input-group-append">
+                <button class="item" (click)="resetGenerique()">x</button>
+              </div>
             </div>
-          </div>
 
-          <div class="input-group">
-            <label>par voie d'administration </label>
-            <p-dropdown
-              [options]="voieAdministrations"
-              [(ngModel)]="voieAdministrationSelected"
-              optionLabel="name"
-              [filter]="true"
-              filterBy="name"
-              [showClear]="true"
-              placeholder="par voie d'administration..."
-            >
-              <ng-template pTemplate="selectedItem">
-                <div
-                  class="voieAdministration-item voieAdministration-item-value"
-                  *ngIf="voieAdministrationSelected"
-                >
-                  <div>{{ voieAdministrationSelected.id }}</div>
-                </div>
-              </ng-template>
-              <ng-template let-voieAdministration pTemplate="item">
-                <div>
-                  <div>{{ voieAdministration.id }}</div>
-                </div>
-              </ng-template>
-            </p-dropdown>
+            <div class="input-group">
+              <label>par voie d'administration </label>
+              <select [(ngModel)]="voieAdministrationStringSelected" id="voieAdministrations" name="voieAdministrations">
+                <option (click)="onClick('')"></option>
+                <option *ngFor="let voieAdministrationstring of this.voieAdministrationsString"
+                        (click)="onClick(voieAdministrationstring)"
+                >{{voieAdministrationstring}}</option>
+              </select>
             </div>
+
           </form>
         </div>
+        <div class="col-3"></div>
+      </div>
 
     </section>
 

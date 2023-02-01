@@ -25,6 +25,14 @@
             presentation.typeDeVoie.length > 0
           "
         >
+        <p
+          class="voieAdmin"
+          *ngIf="
+            presentation &&
+            presentation.generique &&
+            presentation.generique.length > 0
+          "
+        >
           Voie Administration :
           {{ presentation.typeDeVoie | slice : 0 : 40 }}
           {{ presentation.typeDeVoie.length > 40 ? "..." : "" }}
