@@ -10,6 +10,7 @@ import {ResultatRecherche} from "./models/resultatRecherche";
 import { Observable, of } from 'rxjs';
 import { Commande } from './models/commande';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,11 +22,8 @@ export class AppComponent {
   displayCriteria = false;
 
   voieAdministrations!:VoieAdministration[];
-
-  //nomSelected:string='';
-  //libeleSelected:string='';
-  //generiqueSelected:string='';
-  voieAdministrationSelected!:VoieAdministration;
+  voieAdministrationsString!:String[];
+  voieAdministrationStringSelected:String="";
 
   critereRecherche!:CritereRecherche;
   commandesCompte!: Observable<Commande>;
@@ -39,6 +37,7 @@ export class AppComponent {
 
   async ngOnInit() {
     this.voieAdministrations = await this.voieAdministration.getVoieAdministration();
+    this.voieAdministrationsString = this.voieAdministrations.map(data=>data.id);
     this.commandesCompte = this.auth.commandesCompte;
   }
 
@@ -78,14 +77,18 @@ export class AppComponent {
       libellePresentation: this.libellePresentation,
       libelleMedicament: this.libelleMedicament,
       generique: this.generique,
-      voieAdministrations: ["oral"],
+      voieAdministrations: [this.voieAdministrationStringSelected],
     }
 
+    console.log(this.critereRecherche)
     console.log("JE RECHERCHE !")
     let monResultatDeRecherche: ResultatRecherche[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
     console.log("MON RESULTAT DE RECHERCHE = ");
     console.log(monResultatDeRecherche);
+  }
 
+  onClick(voieAdministration:String){
+    this.voieAdministrationStringSelected=voieAdministration;
   }
 
 
