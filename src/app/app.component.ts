@@ -7,7 +7,7 @@ import {CritereRecherche} from "./models/critereRecherche";
 import {Presentation} from "./models/presentation";
 import {PresentationService} from "./services/presentation.service";
 import {ResultatRecherche} from "./models/resultatRecherche";
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Commande } from './models/commande';
 
 
@@ -72,13 +72,6 @@ export class AppComponent {
   }
   async demanderPresentation() {
     this.displayCriteria=false;
-    /*
-    this.critereRecherche = {
-      libellePresentation: "cone",
-      libelleMedicament: "prolypropyl",
-      generique: "nebi",
-      voieAdministrations: ["oral"],
-    }*/
 
     this.critereRecherche = {
       libellePresentation: this.libellePresentation,
@@ -98,4 +91,15 @@ export class AppComponent {
     this.voieAdministrationStringSelected=voieAdministration;
   }
 
+
+    getNbProdPanier(){
+      let nbProd = 0
+      const localPanier = of(localStorage.getItem("panier"))
+      localPanier.subscribe((panier)=>{
+        if(panier != null){
+          nbProd = JSON.parse(panier).estconstitueedes.length;
+        }
+      })
+      return nbProd;
+    }
 }

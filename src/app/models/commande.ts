@@ -1,4 +1,4 @@
-import { Estconstitueede } from "./estConstitueeDe";
+import { Estconstitueede } from "./estconstitueede";
 
 export interface Commande {
   id:number;

@@ -53,7 +53,7 @@ export class PresentationDetailComponent {
       const idUser = localStorage.getItem('userId');
       if (idUser) {
         this.panierService
-          .addProduct(produitID, quantiteCommande, +idUser[1])
+          .addProduct(produitID, quantiteCommande, parseInt(idUser!.replace(/[^\d]/g, '')))
           .then(() => {
             this.message = 'La produit a été ajouté au panier';
             this.messageService.add({
