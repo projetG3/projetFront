@@ -8,7 +8,7 @@ import { lastValueFrom, Observable, of } from 'rxjs';
 import { Presentation } from 'src/app/models/presentation';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Estconstitueede } from 'src/app/models/estconstitueede';
+import { Estconstitueede } from 'src/app/models/estConstitueeDe';
 
 @Component({
   selector: 'app-panier',
@@ -108,9 +108,6 @@ export class PanierComponent implements OnInit {
         }else{
             await this.validation(user);
         }
-        //ensuite, si la liste n'est pas vide alors on affiche les produits pour lesquels il manque des stock et on demande à l'utilisateur s'il veut tout de même valider sa commande. Deux cas :
-        // 1. il veut valider la commande -> on appel la méthode pour forcer la validation. Une fois fait, il faut bien penser à vider le localStorage (panier)
-        // 2. il ne veut pas forcer, alors on ne fait rien de particulier
     } catch (error: any) {
       throw new Error(error);
     }

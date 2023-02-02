@@ -3,7 +3,7 @@
   <h1>{{ presentation.codecis.nom }}</h1>
   <p>{{ presentation.libelle }}</p>
   <p>{{ presentation.status }}</p>
-  <p>Quantité disponible : {{ presentation.quantitedispo }}</p>
+  <p [class.pasdestock]="presentation.quantitedispo==0">Quantité disponible : {{ presentation.quantitedispo }}</p>
 
   <form
     class="ajouterPanier"
