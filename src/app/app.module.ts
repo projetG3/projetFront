@@ -2,42 +2,39 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MessageModule } from 'primeng/message';
-import { PaginatorModule } from 'primeng/paginator';
-import { VirtualScrollerModule } from 'primeng/virtualscroller';
-import {MessagesModule} from 'primeng/messages';
-import {ButtonModule} from 'primeng/button';
-import {InputTextModule} from 'primeng/inputtext';
-import {RippleModule} from 'primeng/ripple';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {InputNumberModule} from 'primeng/inputnumber';
-import {PasswordModule} from 'primeng/password';
-import { ToastModule } from 'primeng/toast';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AccordionModule } from 'primeng/accordion';
 import { MessageService } from 'primeng/api';
+import { ButtonModule } from 'primeng/button';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { InputTextModule } from 'primeng/inputtext';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { PaginatorModule } from 'primeng/paginator';
+import { PasswordModule } from 'primeng/password';
+import { RippleModule } from 'primeng/ripple';
+import { ToastModule } from 'primeng/toast';
+import { VirtualScrollerModule } from 'primeng/virtualscroller';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PresentationsComponent } from './pages/presentations/presentations.component';
-import { PresentationDetailComponent } from './pages/presentation-detail/presentation-detail.component';
-import {AccordionModule} from 'primeng/accordion';
 import { PanierComponent } from './pages/panier/panier.component';
+import { PresentationDetailComponent } from './pages/presentation-detail/presentation-detail.component';
+import { PresentationsComponent } from './pages/presentations/presentations.component';
 import { PanierService } from './services/panier.service';
-
 
 @NgModule({
   providers: [MessageService, PanierService],
   declarations: [
     AppComponent,
     ConnexionComponent,
-    AdminComponent,
     HomeComponent,
     PresentationsComponent,
     PresentationDetailComponent,
-    PanierComponent
+    PanierComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,8 +58,8 @@ import { PanierService } from './services/panier.service';
     FormsModule,
     AccordionModule,
     PasswordModule,
-    ToastModule
+    ToastModule,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
