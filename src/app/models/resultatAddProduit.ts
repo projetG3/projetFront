@@ -1,9 +1,6 @@
 import {Presentation} from "./presentation";
 import {Commande} from "./commande";
-import { Estconstitueede } from "./estconstitueede";
-
-
-
+import {Estconstitueede} from "./estConstitueeDe";
 
 
 export interface ResultatAddProduit {

@@ -1,4 +1,5 @@
-import { Estconstitueede } from "./estconstitueede";
+import { Estconstitueede } from "./estConstitueeDe";
+import {Compte} from "./compte";
 
 export interface Commande {
   id:number;
@@ -8,5 +9,6 @@ export interface Commande {
   statusfacture:boolean;
   datefacture:Date;
   nom:string;
+  compte:Compte;
   estconstitueedes:Estconstitueede[];
 }

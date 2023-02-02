@@ -26,6 +26,8 @@ import { PresentationDetailComponent } from './pages/presentation-detail/present
 import {AccordionModule} from 'primeng/accordion';
 import { PanierComponent } from './pages/panier/panier.component';
 import { PanierService } from './services/panier.service';
+import {CommandesComponent} from "./pages/Commandes/commandes.component";
+import {OrderListModule} from "primeng/orderlist";
 
 
 @NgModule({
@@ -37,7 +39,8 @@ import { PanierService } from './services/panier.service';
     HomeComponent,
     PresentationsComponent,
     PresentationDetailComponent,
-    PanierComponent
+    PanierComponent,
+    CommandesComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,8 @@ import { PanierService } from './services/panier.service';
     FormsModule,
     AccordionModule,
     PasswordModule,
-    ToastModule
+    ToastModule,
+    OrderListModule
   ],
   bootstrap: [AppComponent]
 })

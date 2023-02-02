@@ -8,7 +8,7 @@ import { lastValueFrom, Observable, of } from 'rxjs';
 import { Presentation } from 'src/app/models/presentation';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { Estconstitueede } from 'src/app/models/estconstitueede';
+import {Estconstitueede} from "../../models/estConstitueeDe";
 
 @Component({
   selector: 'app-panier',

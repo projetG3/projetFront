@@ -9,6 +9,8 @@ import {PresentationService} from "./services/presentation.service";
 import {ResultatRecherche} from "./models/resultatRecherche";
 import { Observable, of } from 'rxjs';
 import { Commande } from './models/commande';
+import {CompositionService} from "./services/composition.service";
+import {Composition} from "./models/composition";
 
 
 @Component({
@@ -22,8 +24,13 @@ export class AppComponent {
   displayCriteria = false;
 
   voieAdministrations!:VoieAdministration[];
-  voieAdministrationsString!:String[];
-  voieAdministrationStringSelected:String="";
+  voieAdministrationsString!:string[];
+  voieAdministrationStringSelected:string="";
+
+  compositions!:Composition[];
+  principeActifs!:string[];
+  principeActifSelected:string="";
+
 
   critereRecherche!:CritereRecherche;
   commandesCompte!: Observable<Commande>;
@@ -33,15 +40,21 @@ export class AppComponent {
   libelleMedicament : string ='';
   generique : string ='';
   mesVoiesAdministrations : string[] =[];
+  denominationSubstance : string ='';
 
 
   async ngOnInit() {
     this.voieAdministrations = await this.voieAdministration.getVoieAdministration();
     this.voieAdministrationsString = this.voieAdministrations.map(data=>data.id);
+
+    this.principeActifs = await this.composition.getAllCompositions();
+    this.principeActifs = this.principeActifs.sort();
+    //this.principeActifs = this.compositions.map(data=>data.denominationsubstance);
+
     this.commandesCompte = this.auth.commandesCompte;
   }
 
-  constructor(private auth: AuthService,private router: Router, private voieAdministration: VoieAdministrationService, private presentation: PresentationService){
+  constructor(private auth: AuthService,private router: Router, private voieAdministration: VoieAdministrationService, private presentation: PresentationService, private composition:CompositionService){
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.isRouteConnexion = event.url === '/connexion';
@@ -78,6 +91,7 @@ export class AppComponent {
       libelleMedicament: this.libelleMedicament,
       generique: this.generique,
       voieAdministrations: [this.voieAdministrationStringSelected],
+      denominationSubstance: ""
     }
 
     console.log(this.critereRecherche)
@@ -87,19 +101,39 @@ export class AppComponent {
     console.log(monResultatDeRecherche);
   }
 
-  onClick(voieAdministration:String){
+  onClickVoieAdministration(voieAdministration:string){
     this.voieAdministrationStringSelected=voieAdministration;
   }
 
+  onClickPrincipeAftif(principeActif:string){
+    this.principeActifSelected=principeActif;
+  }
 
-    getNbProdPanier(){
-      let nbProd = 0
-      const localPanier = of(localStorage.getItem("panier"))
-      localPanier.subscribe((panier)=>{
-        if(panier != null){
-          nbProd = JSON.parse(panier).estconstitueedes.length;
+  resetAll(){
+    this.resetLibellePresentation();
+    this.resetLibelleMedicament();
+    this.resetGenerique();
+    this.voieAdministrationStringSelected="";
+    this.principeActifSelected="";
+  }
+
+
+  getNbProdPanier(){
+    let nbProd = 0;
+
+    const localPanier = of(localStorage.getItem("panier"));
+    localPanier.subscribe((panier) => {
+      if (panier !== null) {
+        try {
+          const parsedPanier = JSON.parse(panier);
+          nbProd = parsedPanier.estconstitueedes.length;
+        } catch (e) {
+          //console.error("Invalid JSON in localStorage:", e);
         }
-      })
-      return nbProd;
-    }
+      }
+    });
+
+    return nbProd;
+  }
+
 }
