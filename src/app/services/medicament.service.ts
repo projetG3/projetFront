@@ -14,7 +14,7 @@ export class MedicamentService {
     try {
       let reponse = await lastValueFrom(
         this.httpClient.get<Medicament[]>(
-          'http://localhost:8080/medicament/list'
+          'http://localhost:4200/api/medicament/list'
         )
       );
       return reponse;

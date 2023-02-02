@@ -67,7 +67,7 @@ export class PanierComponent implements OnInit {
     try {
       let reponse = await lastValueFrom(
         this.httpClient.post<Commande>(
-          'http://localhost:8080/commande/updateQuantite',
+          'http://localhost:4200/api/commande/updateQuantite',
           {
             produit: estconstitueede!.presentation.id,
             quantiteCommande: estconstitueede!.quantite,
@@ -86,7 +86,7 @@ export class PanierComponent implements OnInit {
   async validation(user : number){
     const nom : string|null = prompt("Voulez vous ajouter cette commande en tant que commande type? Si oui, ajoutez lui un nom");
     const idPanier = this.panier!.id;
-    await lastValueFrom(this.httpClient.get<number>('http://localhost:8080/commande/validerforce/' + user + '/' + this.panier!.id));
+    await lastValueFrom(this.httpClient.get<number>('http://localhost:4200/api/commande/validerforce/' + user + '/' + this.panier!.id));
     this.panier = undefined;
     localStorage.setItem('panier', '');
     this.messageService.add({
@@ -94,7 +94,7 @@ export class PanierComponent implements OnInit {
       summary: "Commande validée",
     });
     if(nom != '' && nom != null){
-      await lastValueFrom(this.httpClient.post<string>('http://localhost:8080/commande/createCommandeType',{
+      await lastValueFrom(this.httpClient.post<string>('http://localhost:4200/api/commande/createCommandeType',{
         "compte": user,
         "commande": idPanier,
         "nom": nom
@@ -111,7 +111,7 @@ export class PanierComponent implements OnInit {
     let user = parseInt(idUser!.replace(/[^\d]/g, ''));
     try {
       let reponse = await lastValueFrom(
-        this.httpClient.get<Presentation[]>('http://localhost:8080/commande/valider/' + user + '/' + this.panier!.id));
+        this.httpClient.get<Presentation[]>('http://localhost:4200/api/commande/valider/' + user + '/' + this.panier!.id));
         if(reponse.length != 0){
           let text : string = "Certains produits ne sont pas en stock : \n";
           reponse.forEach((presentation) => {text += " - " + presentation.codecis.nom + " \n"});

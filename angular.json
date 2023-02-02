@@ -68,7 +68,8 @@
             "options": {
               "browserTarget": "angular-nodejs-example:build",
               "host": "0.0.0.0",
-              "port": 4200
+              "port": 4200,
+              "proxyConfig": "proxy.config.json"
             },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {

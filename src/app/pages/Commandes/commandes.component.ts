@@ -36,7 +36,7 @@ export class CommandesComponent {
 
     try {
       let reponse : Commande = await lastValueFrom(
-        this.httpClient.get<Commande>('http://localhost:8080/commande/ajoutercommandetype/' + user + '/' + idCommandeType));
+        this.httpClient.get<Commande>('http://localhost:4200/api/commande/ajoutercommandetype/' + user + '/' + idCommandeType));
         localStorage.setItem("panier", JSON.stringify(reponse));
         let message = 'Commande type ajoutée au panier';
         this.messageService.add({

@@ -13,7 +13,7 @@ export class VoieAdministrationService {
     try {
       let reponse = await lastValueFrom(
         this.httpClient.get<VoieAdministration[]>(
-          'http://localhost:8080/voieadministration/list'
+          'http://localhost:4200/api/voieadministration/list'
         )
       );
       return reponse;

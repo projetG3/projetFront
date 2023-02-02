@@ -42,7 +42,7 @@ export class AuthService {
       };
       let reponse = await lastValueFrom(
         this.httpClient.post<Compte>(
-          'http://localhost:8080/compte/auth',
+          'http://localhost:4200/api/compte/auth',
           {
             id: user.id,
             password: user.password,

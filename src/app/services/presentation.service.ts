@@ -40,7 +40,7 @@ export class PresentationService {
 
     try {
       this.status = 'Recherche en cours'
-      let reponse = await lastValueFrom(this.httpClient.post<ResultatRecherche[]>('http://localhost:8080/presentation/resultat', body));
+      let reponse = await lastValueFrom(this.httpClient.post<ResultatRecherche[]>('http://localhost:4200/api/presentation/resultat', body));
       this.updateData(reponse);
       if(reponse.length == 0){
         this.status = "AUCUN RÉSULTAT";
@@ -60,7 +60,7 @@ export class PresentationService {
     try {
       let reponse = await lastValueFrom(
         this.httpClient.get<Presentation>(
-          'http://localhost:8080/presentation/' + id
+          'http://localhost:4200/api/presentation/' + id
         )
       );
       return reponse;

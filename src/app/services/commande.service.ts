@@ -20,7 +20,7 @@ export class CommandeService {
     try {
       this.status="Recherche en cours";
       let reponse = await lastValueFrom(
-        this.httpClient.get<Commande[]>('http://localhost:8080/commande/getCommandeType/'+id)
+        this.httpClient.get<Commande[]>('http://localhost:4200/api/commande/getCommandeType/'+id)
       );
       if(reponse.length == 0){
         this.status = "Aucun résultat";

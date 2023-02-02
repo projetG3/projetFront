@@ -37,7 +37,7 @@ export class PanierService {
     try {
       let resultatAddProduit = await lastValueFrom(
         this.httpClient.post<Commande>(
-          'http://localhost:8080/commande/addProduct',
+          'http://localhost:4200/api/commande/addProduct',
           body,
           httpOptions
         )

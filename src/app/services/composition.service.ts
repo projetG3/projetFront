@@ -13,7 +13,7 @@ export class CompositionService {
     try {
       let reponse = await lastValueFrom(
         this.httpClient.get<String[]>(
-          'http://localhost:8080/compositions/principeactif'
+          'http://localhost:4200/api/compositions/principeactif'
         )
       );
       return reponse;
