@@ -27,8 +27,6 @@ export class CommandesComponent {
       this.idCompte = parseInt(id.replace(/[^\d]/g, '')) ;
       this.commandes = await this.commande.getCommandeType(this.idCompte);
     }
-    console.log("mes commandes")
-    console.log(this.commandes)
   }
 
   async ajouterCommandeType(idCommandeType: number){

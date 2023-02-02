@@ -12,6 +12,7 @@ import {mapOneOrManyArgs} from "rxjs/internal/util/mapOneOrManyArgs";
 
 export class PresentationService {
 
+  status : string = '';
   private dataSubject = new Subject<any[]>();
   presentationsCourantes$ = this.dataSubject.asObservable();
   presentationsCourantes:ResultatRecherche[]=[];
@@ -33,13 +34,23 @@ export class PresentationService {
       libellePresentation:critereRecherche.libellePresentation,
       libelleMedicament:critereRecherche.libelleMedicament,
       generique:critereRecherche.generique,
-      voieAdministrations:critereRecherche.voieAdministrations};
+      voieAdministrations:critereRecherche.voieAdministrations,
+      denominationSubstance:critereRecherche.denominationSubstance
+    };
 
     try {
+      this.status = 'Recherche en cours'
       let reponse = await lastValueFrom(this.httpClient.post<ResultatRecherche[]>('http://localhost:8080/presentation/resultat', body));
       this.updateData(reponse);
+      if(reponse.length == 0){
+        this.status = "AUCUN RÉSULTAT";
+      }
+      else{
+        this.status = '';
+      }
       return reponse;
     } catch (error : any) {
+      this.status = 'Erreur lors de la recherche'
       throw new Error(error);
     }
   }

@@ -38,7 +38,6 @@ export class PanierComponent implements OnInit {
   }
 
   async updateQuantite(constitueedeID : number){
-    console.log(this.panier);
     let trouver : boolean = false;
     let i : number = 0;
     let estconstitueede : Estconstitueede;

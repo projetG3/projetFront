@@ -101,21 +101,19 @@
 
             <div class="input-group">
               <label>par voie d'administration </label>
-              <select [(ngModel)]="voieAdministrationStringSelected" id="voieAdministrations" name="voieAdministrations">
-                <option (click)="onClickVoieAdministration('')"></option>
-                <option *ngFor="let voieAdministrationstring of this.voieAdministrationsString"
-                        (click)="onClickVoieAdministration(voieAdministrationstring)"
-                >{{voieAdministrationstring}}</option>
+              <select #voieAdministration (change)="onClickVoieAdministration(voieAdministration.value)"  id="voieAdministrations" name="voieAdministrations">
+                <option value="''"></option>
+                <option *ngFor="let voieAdministrationstring of this.voieAdministrationsString">
+                  {{voieAdministrationstring}}
+                </option>
               </select>
             </div>
 
             <div class="input-group">
               <label>par principe actif </label>
-              <select [(ngModel)]="principeActifSelected" id="principeActifs" name="principeActifs">
-                <option (click)="onClickPrincipeAftif('')"></option>
-                <option *ngFor="let principeAftif of this.principeActifs"
-                        (click)="onClickPrincipeAftif(principeAftif)"
-                >
+              <select #principeActif (change)="onClickPrincipeAftif(principeActif.value)"  id="principeActifs" name="principeActifs">
+                <option value="''"></option>
+                <option *ngFor="let principeAftif of this.principeActifs">
                   {{principeAftif | slice : 0 : 40 }}
                   {{ principeAftif.length > 40 ? "..." : "" }}
                 </option>

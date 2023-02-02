@@ -91,14 +91,10 @@ export class AppComponent {
       libelleMedicament: this.libelleMedicament,
       generique: this.generique,
       voieAdministrations: [this.voieAdministrationStringSelected],
-      denominationSubstance: ""
+      denominationSubstance: this.principeActifSelected
     }
 
-    console.log(this.critereRecherche)
-    console.log("JE RECHERCHE !")
     let monResultatDeRecherche: ResultatRecherche[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
-    console.log("MON RESULTAT DE RECHERCHE = ");
-    console.log(monResultatDeRecherche);
   }
 
   onClickVoieAdministration(voieAdministration:string){

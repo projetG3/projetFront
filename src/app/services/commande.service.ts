@@ -20,8 +20,6 @@ export class CommandeService {
       let reponse = await lastValueFrom(
         this.httpClient.get<Commande[]>('http://localhost:8080/commande/getCommandeType/'+id)
       );
-      console.log("Mes commandes");
-      console.log(reponse);
       return reponse;
     } catch (error: any) {
       throw new Error(error);

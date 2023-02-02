@@ -30,7 +30,7 @@ export class PresentationDetailComponent {
             await this.presentationService.getPresentationById(+id);
         }
       } catch (error) {
-        console.log("Error lors de la recuperation de la presenation");
+        console.log("Error lors de la recuperation de la presentation");
       }
     });
   }

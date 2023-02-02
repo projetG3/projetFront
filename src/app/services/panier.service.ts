@@ -44,12 +44,10 @@ export class PanierService {
     commandelist.forEach((commande) => {
       if(commande.status === 'en cours'){
         resultCommande = commande;
-        console.log("commande trouvée");
       }
     });
     this.updateData(resultCommande);
     localStorage.setItem('panier',JSON.stringify(resultCommande));
-    console.log(this.panier);
   }
 
 
