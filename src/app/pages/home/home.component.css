@@ -1,12 +1,12 @@
-.welcome{
+.welcome {
   margin: 2vh;
   padding: 4vh;
   text-align: center;
-  background-color:var(--green-pigment)
+  background-color: var(--green-pigment);
+  color: white;
 }
 
-.profil{
+.profil {
   margin: 2vh;
   padding: 4vh;
 }
-

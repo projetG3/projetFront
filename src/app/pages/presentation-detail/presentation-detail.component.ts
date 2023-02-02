@@ -1,9 +1,10 @@
-import { PanierService } from '../../services/panier.service';
-import { Presentation } from '../../models/presentation';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PresentationService } from '../../services/presentation.service';
+import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+
+import { Presentation } from '../../models/presentation';
+import { PanierService } from '../../services/panier.service';
+import { PresentationService } from '../../services/presentation.service';
 
 @Component({
   selector: 'app-presentation-detail',
@@ -30,7 +31,7 @@ export class PresentationDetailComponent {
             await this.presentationService.getPresentationById(+id);
         }
       } catch (error) {
-        console.log("Error lors de la recuperation de la presenation");
+        console.log('Error lors de la recuperation de la presenation');
       }
     });
   }
@@ -53,7 +54,11 @@ export class PresentationDetailComponent {
       const idUser = localStorage.getItem('userId');
       if (idUser) {
         this.panierService
-          .addProduct(produitID, quantiteCommande, parseInt(idUser!.replace(/[^\d]/g, '')))
+          .addProduct(
+            produitID,
+            quantiteCommande,
+            parseInt(idUser!.replace(/[^\d]/g, ''))
+          )
           .then(() => {
             this.message = 'La produit a été ajouté au panier';
             this.messageService.add({

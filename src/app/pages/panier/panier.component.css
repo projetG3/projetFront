@@ -1,15 +1,14 @@
-
-.validPanier{
-  float:right;
-  padding : 10px;
+.validPanier {
+  float: right;
+  padding: 10px;
   margin-bottom: 20px;
 }
 
-.quantiteprix{
+.quantiteprix {
   display: flex !important;
   flex-direction: column !important;
 }
 
-.prix{
+.prix {
   text-align: center;
 }

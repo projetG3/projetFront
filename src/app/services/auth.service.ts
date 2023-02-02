@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Utilisateur } from '../models/utilisateur';
-import { Observable, of, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
-import { lastValueFrom } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Compte } from 'src/app/models/compte';
+import { Injectable } from '@angular/core';
+import { lastValueFrom, Observable } from 'rxjs';
 import { Commande } from 'src/app/models/commande';
+import { Compte } from 'src/app/models/compte';
+
+import { Utilisateur } from '../models/utilisateur';
 import { PanierService } from './panier.service';
 
 @Injectable({
@@ -13,7 +12,7 @@ import { PanierService } from './panier.service';
 })
 export class AuthService {
   isConnected!: boolean;
-  commandesCompte!:Observable<Commande>;
+  commandesCompte!: Observable<Commande>;
 
   constructor(private httpClient: HttpClient, private panier: PanierService) {}
 
@@ -35,19 +34,25 @@ export class AuthService {
 
   async checkUser(user: Utilisateur): Promise<Compte> {
     try {
-      const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' })};
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        }),
+      };
       let reponse = await lastValueFrom(
-        this.httpClient.post<Compte>('http://localhost:8080/compte/auth', {
-          id: user.id,
-          password: user.password,
-        }, httpOptions)
+        this.httpClient.post<Compte>(
+          'http://localhost:8080/compte/auth',
+          {
+            id: user.id,
+            password: user.password,
+          },
+          httpOptions
+        )
       );
-      //let reponseCommande = await this.panier.getCommandeCourante(user.id)
-      //this.commandesCompte = of(reponseCommande);
       return reponse;
     } catch (error: any) {
       throw new Error(error);
     }
   }
-
 }

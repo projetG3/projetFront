@@ -1,7 +1,7 @@
-import {Presentation} from "./presentation";
-import {Medicament} from "./medicament";
+import { Presentation } from './presentation';
+import { Medicament } from './medicament';
 
 export interface RechercheMedicamentResultat {
-    medicaments: Medicament[];
-    presentations: Presentation[];
+  medicaments: Medicament[];
+  presentations: Presentation[];
 }

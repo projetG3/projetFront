@@ -1,8 +1,15 @@
-
-<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+<p-toast
+  [style]="{ marginTop: '80px' }"
+  [position]="'top-right'"
+  [autoZIndex]="true"
+></p-toast>
 
 <div class="grid">
-  <div *ngFor="let presentation of mesResultatDeRecherche | slice : first : first + rows">
+  <div
+    *ngFor="
+      let presentation of mesResultatDeRecherche | slice : first : first + rows
+    "
+  >
     <div class="item card">
       <div class="presentationDescription">
         <a href="/presentation/{{ presentation.id }}">
@@ -24,7 +31,7 @@
             presentation.typeDeVoie &&
             presentation.typeDeVoie.length > 0
           "
-        >
+        ></p>
         <p
           class="voieAdmin"
           *ngIf="
@@ -39,9 +46,20 @@
         </p>
       </div>
 
-      <form class="ajouterPanier" (ngSubmit)="addProduct(presentation.id, +quantiteCommande.value)" #form="ngForm">
+      <form
+        class="ajouterPanier"
+        (ngSubmit)="addProduct(presentation.id, +quantiteCommande.value)"
+        #form="ngForm"
+      >
         <div style="display: flex">
-          <input #quantiteCommande type="number" style="width: 10%" min="1" max="presentation.quantitedispo" value="1" />
+          <input
+            #quantiteCommande
+            type="number"
+            style="width: 10%"
+            min="1"
+            max="presentation.quantitedispo"
+            value="1"
+          />
           <button type="submit"><i class="pi pi-shopping-cart"></i></button>
         </div>
       </form>
@@ -53,5 +71,3 @@
   [totalRecords]="mesResultatDeRecherche.length"
   (onPageChange)="onPageChange($event)"
 ></p-paginator>
-
-

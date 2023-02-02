@@ -1,3 +1,3 @@
 export interface CodeApe {
-  id:string
+  id: string;
 }

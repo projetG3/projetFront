@@ -1,11 +1,9 @@
 export interface ResultatRecherche {
   id: number;
-  libellePresentation:string;
-  libelleMedicament:string
-  generique:string;
+  libellePresentation: string;
+  libelleMedicament: string;
+  generique: string;
   quantite: number;
-  prix:number;
+  prix: number;
   typeDeVoie: string;
 }
-
-

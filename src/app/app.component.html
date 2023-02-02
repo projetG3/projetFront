@@ -6,23 +6,27 @@
     </nav>
     -->
     <section class="header-main border-bottom bg-white">
-      <div class="row p-2 pt-3 pb-3 d-flex align-items-center container-fluid align-content-center">
-        <div class="col-2 d-flex " >
+      <div
+        class="row p-2 pt-3 pb-3 d-flex align-items-center container-fluid align-content-center"
+      >
+        <div class="col-2 d-flex">
           <a href="#"
-          ><img
-            class="d-none d-md-flex"
-            src="assets/image/2-rogner.png"
-            width="80%"
+            ><img
+              class="d-none d-md-flex"
+              src="assets/image/2-rogner.png"
+              width="80%"
           /></a>
         </div>
-        <div class="col-7 align-content-center" >
+        <div class="col-7 align-content-center">
           <form class="form-inputs">
             <input
               class="form-control"
               type="text"
               [(ngModel)]="libellePresentation"
+              name="libellePresentation"
               (search)="demanderPresentation()"
               placeholder="Recherche un nom de présentation..."
+              [disabled]="displayCriteria"
             />
             <button
               class="material-symbols-outlined"
@@ -41,11 +45,15 @@
             </button>
           </form>
         </div>
-        <div class="col-3 d-flex align-items-center container-fluid align-content-center topRightOfNav" >
+        <div
+          class="col-3 d-flex align-items-center container-fluid align-content-center topRightOfNav"
+        >
           <div class="item">
             <a href="/panier">
               <h1 class="bi bi-cart"></h1>
-              <span class="notify-badge"> {{getNbProdPanier()}}{{ commandesCompte | async }}</span>
+              <span class="notify-badge">
+                {{ getNbProdPanier() }}{{ commandesCompte | async }}</span
+              >
             </a>
           </div>
           <div class="item" *ngIf="getStatutConnection()">
@@ -66,7 +74,6 @@
               icon="bi bi-person"
             ></button>
           </div>
-
         </div>
       </div>
 
@@ -76,44 +83,86 @@
           <form class="">
             <p>Recherche avancée</p>
             <div class="input-group">
-              <label>par nom de présentation </label>
-              <input style="border: 1px solid black" type="text" placeholder="saisir nom présentation..." [(ngModel)]="libellePresentation" name="libellePresentation" class="form-control">
+              <label>Nom de présentation </label>
+              <input
+                style="border: 1px solid black"
+                type="text"
+                placeholder="saisir nom présentation..."
+                [(ngModel)]="libellePresentation"
+                name="libellePresentation"
+                class="form-control alignInputForm"
+              />
               <div class="input-group-append">
-                <button class="item" (click)="resetLibellePresentation()">x</button>
+                <button
+                  class="item deleteCritere"
+                  (click)="resetLibellePresentation()"
+                >
+                  x
+                </button>
               </div>
             </div>
 
             <div class="input-group">
-              <label>par nom de médicament </label>
-              <input style="border: 1px solid black" type="text" placeholder="saisir nom médicament..." [(ngModel)]="libelleMedicament" name="libelleMedicament" class="form-control">
+              <label>Nom de médicament </label>
+              <input
+                style="border: 1px solid black"
+                type="text"
+                placeholder="saisir nom médicament..."
+                [(ngModel)]="libelleMedicament"
+                name="libelleMedicament"
+                class="form-control alignInputForm"
+              />
               <div class="input-group-append">
-                <button class="item" (click)="resetLibelleMedicament()">x</button>
+                <button
+                  class="item deleteCritere"
+                  (click)="resetLibelleMedicament()"
+                >
+                  x
+                </button>
               </div>
             </div>
 
             <div class="input-group">
-              <label>par nom de générique </label>
-              <input style="border: 1px solid black" type="text" placeholder="saisir nom générique..." [(ngModel)]="generique" name="generique" class="form-control">
+              <label>Nom de générique ...</label>
+              <input
+                style="border: 1px solid black"
+                type="text"
+                placeholder="saisir nom générique..."
+                [(ngModel)]="generique"
+                name="generique"
+                class="form-control alignInputForm"
+              />
               <div class="input-group-append">
-                <button class="item" (click)="resetGenerique()">x</button>
+                <button class="item deleteCritere" (click)="resetGenerique()">
+                  x
+                </button>
               </div>
             </div>
 
             <div class="input-group">
-              <label>par voie d'administration </label>
-              <select [(ngModel)]="voieAdministrationStringSelected" id="voieAdministrations" name="voieAdministrations">
+              <label>Voie d'administration </label>
+              <select
+                [(ngModel)]="voieAdministrationStringSelected"
+                id="voieAdministrations"
+                name="voieAdministrations"
+                class="form-control alignInputForm"
+              >
                 <option (click)="onClick('')"></option>
-                <option *ngFor="let voieAdministrationstring of this.voieAdministrationsString"
-                        (click)="onClick(voieAdministrationstring)"
-                >{{voieAdministrationstring}}</option>
+                <option
+                  *ngFor="
+                    let voieAdministrationstring of this
+                      .voieAdministrationsString
+                  "
+                  (click)="onClick(voieAdministrationstring)"
+                >
+                  {{ voieAdministrationstring }}
+                </option>
               </select>
             </div>
-
           </form>
         </div>
         <div class="col-3"></div>
       </div>
-
     </section>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -134,7 +183,7 @@
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#"
-              >Accueil</a
+                >Accueil</a
               >
             </li>
             <li class="nav-item dropdown">
@@ -162,12 +211,7 @@
         </div>
       </div>
     </nav>
-
   </header>
 </div>
 
 <router-outlet></router-outlet>
-
-
-
-

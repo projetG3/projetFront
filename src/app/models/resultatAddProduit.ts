@@ -1,12 +1,7 @@
-import {Presentation} from "./presentation";
-import {Commande} from "./commande";
-import { Estconstitueede } from "./estconstitueede";
-
-
-
-
+import { Commande } from './commande';
+import { Estconstitueede } from './estconstitueede';
 
 export interface ResultatAddProduit {
-  commande : Commande;
+  commande: Commande;
   estconstitueedes: Estconstitueede[];
 }

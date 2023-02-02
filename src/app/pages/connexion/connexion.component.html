@@ -1,35 +1,56 @@
+<div class="login" style="text-align: center">
+  <img
+    style
+    style="margin-bottom: 3vh"
+    src="../../../assets/image/2-rogner.png"
+  />
 
-
-
-
-<div class="login" style="text-align:center">
-  <img style style="margin-bottom:3vh" src="../../../assets/image/2-rogner.png">
-
-  <div *ngIf="this.isAccountInvalid" class="alert alert-danger" role="alert" style="display: flex;justify-content: center;align-items: center;">
+  <div
+    *ngIf="this.isAccountInvalid"
+    class="alert alert-danger"
+    role="alert"
+    style="display: flex; justify-content: center; align-items: center"
+  >
     Compte invalide ❌
   </div>
 
   <h2 class="login-header">S'identifier</h2>
-  <form [formGroup]="loginForm" class="login-container" (ngSubmit)="seConnecter()">
+  <form
+    [formGroup]="loginForm"
+    class="login-container"
+    (ngSubmit)="seConnecter()"
+  >
     <p [ngClass]="{ 'has-error': isSubmitted && formControls.id.errors }">
-      <input type="text" placeholder="Identifiant" formControlName="id">
+      <input type="text" placeholder="Identifiant" formControlName="id" />
     </p>
 
     <div *ngIf="isSubmitted && formControls.id.errors" class="help-block">
-      <div *ngIf="formControls.id.errors.required"><font color="red">L'identifiant est requis</font></div>
+      <div *ngIf="formControls.id.errors.required">
+        <font color="red">L'identifiant est requis</font>
+      </div>
     </div>
 
     <p [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">
-      <input type="password" placeholder="Password" formControlName="password">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
     </p>
 
     <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-      <div *ngIf="formControls.password.errors.required"><font color="red">Mot de passe requis</font></div>
+      <div *ngIf="formControls.password.errors.required">
+        <font color="red">Mot de passe requis</font>
+      </div>
     </div>
 
     <p>
-      <input type="submit" value="Log in">
+      <input type="submit" value="Log in" />
     </p>
-    <a href="/" style="text-decoration: none;color:var(--shamrock-green);width: 80%;">Annuler</a>
+    <a
+      href="/"
+      style="text-decoration: none; color: var(--shamrock-green); width: 80%"
+      >Annuler</a
+    >
   </form>
 </div>

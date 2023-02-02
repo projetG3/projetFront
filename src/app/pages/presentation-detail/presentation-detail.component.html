@@ -1,4 +1,8 @@
-<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+<p-toast
+  [style]="{ marginTop: '80px' }"
+  [position]="'top-right'"
+  [autoZIndex]="true"
+></p-toast>
 <div *ngIf="presentation" class="card cardDetail">
   <h1>{{ presentation.codecis.nom }}</h1>
   <p>{{ presentation.libelle }}</p>
@@ -7,9 +11,7 @@
 
   <form
     class="ajouterPanier"
-    (ngSubmit)="
-      addProduct(presentation.id, +quantiteCommande.value)
-    "
+    (ngSubmit)="addProduct(presentation.id, +quantiteCommande.value)"
   >
     <div style="display: flex">
       <input
@@ -91,7 +93,9 @@
     <p-accordionTab header="Informations supplémentaire">
       <ul>
         <li *ngIf="presentation.etatcommercialisation">
-          <p>Etat de commercialisation: {{ presentation.etatcommercialisation }}</p>
+          <p>
+            Etat de commercialisation: {{ presentation.etatcommercialisation }}
+          </p>
         </li>
         <li *ngIf="presentation.datecommercialisation">
           <p>

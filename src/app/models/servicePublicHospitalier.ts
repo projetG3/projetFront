@@ -1,4 +1,4 @@
 export interface ServicePublicHospitalier {
-  id:number;
-  libelle:number;
+  id: number;
+  libelle: number;
 }

@@ -1,7 +1,7 @@
-import {Medicament} from "./medicament";
+import { Medicament } from './medicament';
 
 export interface Informe {
-  codesis : Medicament
+  codesis: Medicament;
   datedebutinfo: Date;
   datefininfo: Date;
   information: string;

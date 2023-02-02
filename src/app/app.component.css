@@ -1,21 +1,20 @@
-.form-inputs{
+.form-inputs {
   /* This bit sets up the horizontal layout */
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
 
   /* This bit draws the box around it */
-  border:1px solid grey;
+  border: 1px solid grey;
 
   /* I've used padding so you can see the edges of the elements. */
-  padding:1px;
-
+  padding: 1px;
 }
 
 input {
   /* Tell the input to use all the available space */
-  flex-grow:2;
+  flex-grow: 2;
   /* And hide the input's outline, so the form looks like the outline */
-  border:none;
+  border: none;
 }
 
 /* remove the input focus blue box, it will be in the wrong place. */
@@ -25,56 +24,67 @@ input:focus {
 
 /* Add the focus effect to the form so it contains the button */
 form:focus-within {
-  outline: 1px solid var(--cerulean-crayola)
+  outline: 1px solid var(--cerulean-crayola);
 }
-
 
 .material-symbols-outlined {
-  margin-left:0.25vh;
+  margin-left: 0.25vh;
 }
 
-.logButton{
+.logButton {
   border-radius: 2vh;
 }
 
-
-
-
-.topRightOfNav{
+.topRightOfNav {
   display: flex !important;
   justify-content: space-between !important;
 }
 
 .item {
-  position:relative;
-  display:inline-block;
+  position: relative;
+  display: inline-block;
 }
-.notify-badge{
+.notify-badge {
   position: absolute;
-  right:-10px;
-  top:20px;
-  background:red;
+  right: -10px;
+  top: 20px;
+  background: red;
   text-align: center;
   border-radius: 30px 30px 30px 30px;
-  color:white;
-  padding:1px 10px;
-  font-size:20px;
+  color: white;
+  padding: 1px 10px;
+  font-size: 20px;
 }
 
-
-.login{
-    background: var(--shamrock-green);
-    border-color: transparent;
-    color: #fff;
-    cursor: pointer;
+.login {
+  background: var(--shamrock-green);
+  border-color: transparent;
+  color: #fff;
+  cursor: pointer;
 }
 
-.login:hover{
-    background: var(--sheen-green);
+.login:hover {
+  background: var(--sheen-green);
 }
 
-.criterBar{
+.criterBar {
   position: absolute;
   margin-top: 30px;
   z-index: 2;
+}
+
+.input-group label {
+  text-align: right !important;
+  padding-right: 1rem !important;
+}
+
+.form-control {
+  padding: 2vh;
+}
+
+.alignInputForm {
+}
+
+.deleteCritere {
+  padding: 1.7vh !important;
 }

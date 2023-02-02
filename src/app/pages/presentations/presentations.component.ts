@@ -1,9 +1,10 @@
-import { Presentation } from '../../models/presentation';
-import { PanierService } from '../../services/panier.service';
 import { Component } from '@angular/core';
-import { PresentationService } from '../../services/presentation.service';
 import { MessageService } from 'primeng/api';
-import {ResultatRecherche} from "../../models/resultatRecherche";
+
+import { Presentation } from '../../models/presentation';
+import { ResultatRecherche } from '../../models/resultatRecherche';
+import { PanierService } from '../../services/panier.service';
+import { PresentationService } from '../../services/presentation.service';
 
 @Component({
   selector: 'app-presentations',
@@ -24,7 +25,7 @@ export class PresentationsComponent {
   ) {}
 
   ngOnInit() {
-    this.presentation.presentationsCourantes$.subscribe(data => {
+    this.presentation.presentationsCourantes$.subscribe((data) => {
       this.mesResultatDeRecherche = data;
     });
   }
@@ -46,7 +47,11 @@ export class PresentationsComponent {
       const idUser = localStorage.getItem('userId');
       if (idUser) {
         this.panierService
-          .addProduct(produitID, quantiteCommande, parseInt(idUser!.replace(/[^\d]/g, '')))
+          .addProduct(
+            produitID,
+            quantiteCommande,
+            parseInt(idUser!.replace(/[^\d]/g, ''))
+          )
           .then(() => {
             this.message = 'La produit a été ajouté au panier';
             this.messageService.add({
@@ -59,4 +64,3 @@ export class PresentationsComponent {
     quantiteCommande = 1;
   }
 }
-

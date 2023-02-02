@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Commande } from 'src/app/models/commande';
 import { Compte } from 'src/app/models/compte';
-import { Presentation } from 'src/app/models/presentation';
+
 import { Utilisateur } from '../../models/utilisateur';
 import { AuthService } from '../../services/auth.service';
-import {PanierService} from "../../services/panier.service";
+import { PanierService } from '../../services/panier.service';
 
 @Component({
   selector: 'app-connexion',
@@ -28,7 +27,6 @@ export class ConnexionComponent implements OnInit {
       id: ['', Validators.required],
       password: ['', Validators.required],
     });
-
   }
   get formControls() {
     return this.loginForm.controls;
@@ -44,13 +42,13 @@ export class ConnexionComponent implements OnInit {
     };
 
     try {
-        let compte : Compte = await this.authService.checkUser(user);
-        this.panier.getCommandeEnCours(compte.commandes);
-        this.isAccountInvalid = false;
-        this.authService.seConnecter(this.loginForm.value);
-        this.router.navigateByUrl('/admin');
-    } catch(error) {
-        this.isAccountInvalid = true;
+      let compte: Compte = await this.authService.checkUser(user);
+      this.panier.getCommandeEnCours(compte.commandes);
+      this.isAccountInvalid = false;
+      this.authService.seConnecter(this.loginForm.value);
+      this.router.navigateByUrl('/home');
+    } catch (error) {
+      this.isAccountInvalid = true;
     }
   }
 }
