@@ -1,0 +1,25 @@
+.card {
+  padding: 2vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45vh, 1fr));
+  grid-gap: 1vh;
+  padding: 0.5em;
+}
+
+.item.card {
+  position: relative; /* permet de positionner des éléments enfants par rapport à cet élément */
+}
+
+.voieAdmin {
+  color: var(--cerulean-crayola);
+}
+.prix {
+  color: var(--shamrock-green);
+}
+.pasdestock{
+  color: red;
+}
+

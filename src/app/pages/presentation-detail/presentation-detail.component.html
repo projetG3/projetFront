@@ -1,0 +1,120 @@
+<p-toast
+  [style]="{ marginTop: '80px' }"
+  [position]="'top-right'"
+  [autoZIndex]="true"
+></p-toast>
+<div *ngIf="presentation" class="card cardDetail">
+  <h1>{{ presentation.codecis.nom }}</h1>
+  <p>{{ presentation.libelle }}</p>
+  <p>{{ presentation.status }}</p>
+  <p [class.pasdestock]="presentation.quantitedispo==0">Quantité disponible : {{ presentation.quantitedispo }}</p>
+
+  <form
+    class="ajouterPanier"
+    (ngSubmit)="addProduct(presentation.id, +quantiteCommande.value)"
+  >
+    <div style="display: flex">
+      <input
+        #quantiteCommande
+        type="number"
+        style="width: 5%"
+        min="1"
+        max="presentation.quantitedispo"
+        value="1"
+      />
+      <button type="submit">Ajouter au panier</button>
+    </div>
+  </form>
+
+  <p-accordion [multiple]="true">
+    <p-accordionTab header="Information sur le médicament">
+      <ul>
+        <li *ngIf="presentation.codecis.formepharmaceutique">
+          <p>
+            Forme pharmaceutique:
+            {{ parseJson(presentation.codecis.formepharmaceutique)["id"] }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.statutadministratif">
+          <p>
+            Statut administratif:
+            {{ parseJson(presentation.codecis.statutadministratif)["id"] }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.typeprocedure">
+          <p>
+            Type de procedure:
+            {{ parseJson(presentation.codecis.typeprocedure)["id"] }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.etatcommercialisation">
+          <p>
+            Etat de commercialisation:
+            {{ parseJson(presentation.codecis.etatcommercialisation)["id"] }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.dateamm">
+          <p>Date amm: {{ presentation.codecis.dateamm }}</p>
+        </li>
+        <li *ngIf="presentation.codecis.statusbdm">
+          <p>Status bdm: {{ presentation.codecis.statusbdm }}</p>
+        </li>
+        <li *ngIf="presentation.codecis.numeroautorisationeuropeenne">
+          <p>
+            N°Autorisation européenne:
+            {{ presentation.codecis.numeroautorisationeuropeenne }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.surveillancerenforcee">
+          <p>
+            Surveillance renforcee:
+            {{ presentation.codecis.surveillancerenforcee }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.administrepars">
+          <p>
+            Mode administatrion :
+            {{
+              parseJson(objectToLiterral(presentation.codecis.administrepars))[
+                "voieadministration"
+              ]["id"]
+            }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecis.estcrerpar">
+          <p>Crée par: {{ presentation.codecis.estcrerpar }}</p>
+        </li>
+        <li *ngIf="presentation.codecis.informe">
+          <p>Informe: {{ presentation.codecis.informe }}</p>
+        </li>
+      </ul>
+    </p-accordionTab>
+
+    <p-accordionTab header="Informations supplémentaire">
+      <ul>
+        <li *ngIf="presentation.etatcommercialisation">
+          <p>
+            Etat de commercialisation: {{ presentation.etatcommercialisation }}
+          </p>
+        </li>
+        <li *ngIf="presentation.datecommercialisation">
+          <p>
+            Date de commercialisation: {{ presentation.datecommercialisation }}
+          </p>
+        </li>
+        <li *ngIf="presentation.codecip13">
+          <p>Code cip13: {{ presentation.codecip13 }}</p>
+        </li>
+        <li *ngIf="presentation.agrement">
+          <p>Agrement: {{ presentation.agrement }}</p>
+        </li>
+        <li *ngIf="presentation.indications">
+          <p>Indications: {{ presentation.indications }}</p>
+        </li>
+        <li *ngIf="presentation.estrembourseeas">
+          <p>Remboursement : {{ presentation.estrembourseeas }}</p>
+        </li>
+      </ul>
+    </p-accordionTab>
+  </p-accordion>
+</div>

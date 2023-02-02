@@ -1,0 +1,69 @@
+{{getPresentationStatus()}}
+<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+<div class="grid">
+  <div
+    *ngFor="
+      let presentation of mesResultatDeRecherche | slice : first : first + rows
+    "
+  >
+    <div class="item card">
+      <div class="presentationDescription">
+        <a href="/presentation/{{ presentation.id }}">
+          <h6 class="presentationNames">
+            {{ presentation.libelleMedicament | slice : 0 : 40 }}
+            {{ presentation.libelleMedicament.length > 40 ? "..." : "" }}
+          </h6>
+        </a>
+        <div class="prix">{{ presentation.prix }} €</div>
+        <p>
+          {{ presentation.libellePresentation | slice : 0 : 50 }}
+          {{ presentation.libellePresentation.length > 50 ? "..." : "" }}
+        </p>
+        <p [class.pasdestock]="presentation.quantite==0">Quantité : {{ presentation.quantite }}</p>
+        <p
+          class="voieAdmin"
+          *ngIf="
+            presentation &&
+            presentation.typeDeVoie &&
+            presentation.typeDeVoie.length > 0
+          "
+        ></p>
+        <p
+          class="voieAdmin"
+          *ngIf="
+            presentation &&
+            presentation.generique &&
+            presentation.generique.length > 0
+          "
+        >
+          Voie Administration :
+          {{ presentation.typeDeVoie | slice : 0 : 40 }}
+          {{ presentation.typeDeVoie.length > 40 ? "..." : "" }}
+        </p>
+      </div>
+
+      <form
+        class="ajouterPanier"
+        (ngSubmit)="addProduct(presentation.id, +quantiteCommande.value)"
+        #form="ngForm"
+      >
+        <div style="display: flex">
+          <input
+            #quantiteCommande
+            type="number"
+            style="width: 10%"
+            min="1"
+            max="presentation.quantitedispo"
+            value="1"
+          />
+          <button type="submit"><i class="pi pi-shopping-cart"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<p-paginator
+  [rows]="rows"
+  [totalRecords]="mesResultatDeRecherche.length"
+  (onPageChange)="onPageChange($event)"
+></p-paginator>

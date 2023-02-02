@@ -1,0 +1,17 @@
+.validPanier {
+  float: right;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.quantiteprix {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.prix {
+  text-align: center;
+}
+.desactiver{
+  display: none;
+}

@@ -1,0 +1,107 @@
+<p-toast
+  [style]="{ marginTop: '80px' }"
+  [position]="'top-right'"
+  [autoZIndex]="true"
+></p-toast>
+
+<div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col">
+      <div class="card">
+        <div class="card-body p-4">
+          <div class="row">
+            <div class="infoPanier">
+              <div>
+                <h1 class="mb-1">Mon Panier</h1>
+                <p class="mb-0">
+                  {{
+                    this.panier?.estconstitueedes
+                      ? this.panier?.estconstitueedes?.length
+                      : 0
+                  }}
+                  items dans le panier
+                </p>
+              </div>
+              <div>
+                <button
+                  class="validPanier"
+                  style="border-radius: 10px"
+                  (click)="validerCommande()"
+                  [class.desactiver]="this.panier == undefined || this.panier.estconstitueedes == undefined || this.panier.estconstitueedes.length == 0"
+                >
+                  Valider mon panier ✅
+                </button>
+              </div>
+            </div>
+            <div
+              class="card mb-3 mb-lg-0"
+              *ngFor="let estconstitueede of this.panier?.estconstitueedes"
+            >
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex flex-row align-items-center">
+                    <div class="ms-3">
+                      <a
+                        href="presentation/{{
+                          estconstitueede.presentation.id
+                        }}"
+                        ><h5>
+                          {{ estconstitueede.presentation.codecis.nom }}
+                        </h5></a
+                      >
+                      <p class="small mb-0">
+                        {{ estconstitueede.presentation.libelle }}
+                      </p>
+                      <p class="small mb-0">
+                        Prix unitaire:
+                        {{
+                          estconstitueede.presentation.prix.toLocaleString(
+                            "fr-FR",
+                            { style: "currency", currency: "EUR" }
+                          )
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-row align-items-center quantiteprix">
+                    <div style="width: 10vh">
+                      <input
+                        type="number"
+                        (blur)="updateQuantite(estconstitueede.id)"
+                        style="width: 90%"
+                        min="0"
+                        [(ngModel)]="estconstitueede.quantite"
+                      />
+                    </div>
+                    <div style="width: 90px" class="prix">
+                      <h5 class="mb-0">
+                        {{
+                          (
+                            estconstitueede.presentation.prix *
+                            estconstitueede.quantite
+                          ).toLocaleString("fr-FR", {
+                            style: "currency",
+                            currency: "EUR"
+                          })
+                        }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1>
+            Total:
+            {{
+              getTotal().toLocaleString("fr-FR", {
+                style: "currency",
+                currency: "EUR"
+              })
+            }}
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
