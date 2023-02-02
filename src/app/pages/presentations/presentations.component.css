@@ -19,3 +19,7 @@
 .prix {
   color: var(--shamrock-green);
 }
+.pasdestock{
+  color: red;
+}
+

@@ -1,0 +1,42 @@
+<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+
+<!-- <p-orderList [value]="commandes">
+  <ng-template let-commande pTemplate="item">
+    <div>
+      <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{commande.nom}} du {{commande.dateheurecommande}}. MONTANT TOTAL : {{commande.montanttotal }}</div>
+      <button (click)="ajouterCommandeType(commande.id)">Ajouter à la commande</button>
+    </div>
+  </ng-template>
+</p-orderList> -->
+
+<div class="container text-center">
+</div>
+<div *ngIf="commandes.length==0">Aucune commande</div>
+<div *ngIf="commandes.length!=0" class="container">
+  <div class="row">
+    <div class="search-hero">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Chercher par nom...">
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Date</th>
+        <th>Statut</th>
+        <th>Montant</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let commande of commandes | filter:searchText">
+        <td>{{commande.id}}</td>
+        <td>{{commande.nom}}</td>
+        <td>{{commande.dateheurecommande}}</td>
+        <td>{{commande.status}}</td>
+        <td>{{commande.montanttotal}} </td>
+        <td><button (click)="ajouterCommandeType(commande.id)">Ajouter à la commande</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

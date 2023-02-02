@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PanierComponent } from './pages/panier/panier.component';
 import { PresentationDetailComponent } from './pages/presentation-detail/presentation-detail.component';
 import { PresentationsComponent } from './pages/presentations/presentations.component';
+import {CommandesComponent} from "./pages/Commandes/commandes.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'connexion', component: ConnexionComponent },
   { path: 'presentations', component: PresentationsComponent },
   { path: 'panier', component: PanierComponent },
-  { path: 'presentation/:id', component: PresentationDetailComponent },
+  { path: 'commandes', component: CommandesComponent },
+  { path: 'presentation/:id', component: PresentationDetailComponent }
 ];
 
 @NgModule({

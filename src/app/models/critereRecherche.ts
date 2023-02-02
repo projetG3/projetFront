@@ -5,5 +5,7 @@ export interface CritereRecherche {
   libellePresentation: string;
   libelleMedicament: string;
   generique: string;
-  voieAdministrations: String[];
+  voieAdministrations:string[];
+  denominationSubstance: string;
+
 }

@@ -1,9 +1,5 @@
-<p-toast
-  [style]="{ marginTop: '80px' }"
-  [position]="'top-right'"
-  [autoZIndex]="true"
-></p-toast>
-
+{{getPresentationStatus()}}
+<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
 <div class="grid">
   <div
     *ngFor="
@@ -23,7 +19,7 @@
           {{ presentation.libellePresentation | slice : 0 : 50 }}
           {{ presentation.libellePresentation.length > 50 ? "..." : "" }}
         </p>
-        <p>Quantité : {{ presentation.quantite }}</p>
+        <p [class.pasdestock]="presentation.quantite==0">Quantité : {{ presentation.quantite }}</p>
         <p
           class="voieAdmin"
           *ngIf="

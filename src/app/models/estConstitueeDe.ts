@@ -1,4 +1,4 @@
-import { Presentation } from './presentation';
+import {Presentation} from "./presentation";
 
 export interface Estconstitueede {
   id: number;

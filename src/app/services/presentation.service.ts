@@ -10,6 +10,8 @@ import { ResultatRecherche } from '../models/resultatRecherche';
   providedIn: 'root',
 })
 export class PresentationService {
+
+  status : string = '';
   private dataSubject = new Subject<any[]>();
   presentationsCourantes$ = this.dataSubject.asObservable();
   presentationsCourantes: ResultatRecherche[] = [];
@@ -29,25 +31,30 @@ export class PresentationService {
     critereRecherche: CritereRecherche
   ): Promise<ResultatRecherche[]> {
     let body = {
-      libellePresentation: critereRecherche.libellePresentation,
-      libelleMedicament: critereRecherche.libelleMedicament,
-      generique: critereRecherche.generique,
-      voieAdministrations: critereRecherche.voieAdministrations,
+      libellePresentation:critereRecherche.libellePresentation,
+      libelleMedicament:critereRecherche.libelleMedicament,
+      generique:critereRecherche.generique,
+      voieAdministrations:critereRecherche.voieAdministrations,
+      denominationSubstance:critereRecherche.denominationSubstance
     };
 
     try {
-      let reponse = await lastValueFrom(
-        this.httpClient.post<ResultatRecherche[]>(
-          'http://localhost:8080/presentation/resultat',
-          body
-        )
-      );
+      this.status = 'Recherche en cours'
+      let reponse = await lastValueFrom(this.httpClient.post<ResultatRecherche[]>('http://localhost:8080/presentation/resultat', body));
       this.updateData(reponse);
+      if(reponse.length == 0){
+        this.status = "AUCUN RÉSULTAT";
+      }
+      else{
+        this.status = '';
+      }
       return reponse;
-    } catch (error: any) {
+    } catch (error : any) {
+      this.status = 'Erreur lors de la recherche'
       throw new Error(error);
     }
   }
+
 
   async getPresentationById(id: number): Promise<Presentation> {
     try {

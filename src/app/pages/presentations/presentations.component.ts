@@ -63,4 +63,8 @@ export class PresentationsComponent {
     }
     quantiteCommande = 1;
   }
+
+  getPresentationStatus(){
+    return this.presentation.status;
+  }
 }

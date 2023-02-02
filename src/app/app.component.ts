@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-
 import { Commande } from './models/commande';
+import { Composition } from './models/composition';
 import { CritereRecherche } from './models/critereRecherche';
 import { ResultatRecherche } from './models/resultatRecherche';
 import { VoieAdministration } from './models/voieAdministration';
@@ -20,9 +20,14 @@ export class AppComponent {
   isRouteConnexion = false;
   displayCriteria = false;
 
-  voieAdministrations!: VoieAdministration[];
-  voieAdministrationsString!: String[];
-  voieAdministrationStringSelected: String = '';
+  voieAdministrations!:VoieAdministration[];
+  voieAdministrationsString!:string[];
+  voieAdministrationStringSelected:string="";
+
+  compositions!:Composition[];
+  principeActifs!:string[];
+  principeActifSelected:string="";
+
 
   critereRecherche!: CritereRecherche;
   commandesCompte!: Observable<Commande>;
@@ -96,32 +101,45 @@ export class AppComponent {
       libelleMedicament: this.libelleMedicament,
       generique: this.generique,
       voieAdministrations: [this.voieAdministrationStringSelected],
-    };
+      denominationSubstance: this.principeActifSelected
+    }
 
-    console.log(this.critereRecherche);
-    console.log('JE RECHERCHE !');
-    let monResultatDeRecherche: ResultatRecherche[] =
-      await this.presentation.getPrescriptionsBySearchResult(
-        this.critereRecherche
-      );
-    console.log('MON RESULTAT DE RECHERCHE = ');
-    console.log(monResultatDeRecherche);
+    let monResultatDeRecherche: ResultatRecherche[] = await this.presentation.getPrescriptionsBySearchResult(this.critereRecherche);
   }
 
-  onClick(voieAdministration: String) {
-    this.voieAdministrationStringSelected = voieAdministration;
+  onClickVoieAdministration(voieAdministration:string){
+    this.voieAdministrationStringSelected=voieAdministration;
   }
 
-  getNbProdPanier() {
+  onClickPrincipeAftif(principeActif:string){
+    this.principeActifSelected=principeActif;
+  }
+
+  resetAll(){
+    this.resetLibellePresentation();
+    this.resetLibelleMedicament();
+    this.resetGenerique();
+    this.voieAdministrationStringSelected="";
+    this.principeActifSelected="";
+  }
+
+
+  getNbProdPanier(){
     let nbProd = 0;
-    const localPanier = of(localStorage.getItem('panier'));
+
+    const localPanier = of(localStorage.getItem("panier"));
     localPanier.subscribe((panier) => {
-      if (panier != null) {
+      if (panier !== null) {
         try {
-          nbProd = JSON?.parse(panier)?.estconstitueedes?.length;
-        } catch (e) {}
+          const parsedPanier = JSON.parse(panier);
+          nbProd = parsedPanier.estconstitueedes.length;
+        } catch (e) {
+          //console.error("Invalid JSON in localStorage:", e);
+        }
       }
     });
+
     return nbProd;
   }
+
 }

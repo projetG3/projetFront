@@ -25,6 +25,9 @@ import { PanierComponent } from './pages/panier/panier.component';
 import { PresentationDetailComponent } from './pages/presentation-detail/presentation-detail.component';
 import { PresentationsComponent } from './pages/presentations/presentations.component';
 import { PanierService } from './services/panier.service';
+import {CommandesComponent} from "./pages/Commandes/commandes.component";
+import {OrderListModule} from "primeng/orderlist";
+import {Ng2SearchPipeModule} from "ng2-search-filter";
 
 @NgModule({
   providers: [MessageService, PanierService],
@@ -35,6 +38,7 @@ import { PanierService } from './services/panier.service';
     PresentationsComponent,
     PresentationDetailComponent,
     PanierComponent,
+    CommandesComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +63,8 @@ import { PanierService } from './services/panier.service';
     AccordionModule,
     PasswordModule,
     ToastModule,
+    OrderListModule,
+    Ng2SearchPipeModule
   ],
   bootstrap: [AppComponent],
 })
