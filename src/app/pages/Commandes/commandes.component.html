@@ -1,0 +1,7 @@
+<p-orderList [value]="commandes">
+  <ng-template let-commande pTemplate="item">
+    <div>
+      <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{commande.id}} - {{commande.nom}} - {{commande.dateheurecommande}} - {{commande.status}} - {{commande.montanttotal }}</div>
+    </div>
+  </ng-template>
+</p-orderList>

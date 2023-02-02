@@ -1,4 +1,5 @@
 import {Presentation} from "./presentation";
+import {Commande} from "./commande";
 
 
 export interface Estconstitueede {

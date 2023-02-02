@@ -102,11 +102,32 @@
             <div class="input-group">
               <label>par voie d'administration </label>
               <select [(ngModel)]="voieAdministrationStringSelected" id="voieAdministrations" name="voieAdministrations">
-                <option (click)="onClick('')"></option>
+                <option (click)="onClickVoieAdministration('')"></option>
                 <option *ngFor="let voieAdministrationstring of this.voieAdministrationsString"
-                        (click)="onClick(voieAdministrationstring)"
+                        (click)="onClickVoieAdministration(voieAdministrationstring)"
                 >{{voieAdministrationstring}}</option>
               </select>
+            </div>
+
+            <div class="input-group">
+              <label>par principe actif </label>
+              <select [(ngModel)]="principeActifSelected" id="principeActifs" name="principeActifs">
+                <option (click)="onClickPrincipeAftif('')"></option>
+                <option *ngFor="let principeAftif of this.principeActifs"
+                        (click)="onClickPrincipeAftif(principeAftif)"
+                >
+                  {{principeAftif | slice : 0 : 40 }}
+                  {{ principeAftif.length > 40 ? "..." : "" }}
+                </option>
+              </select>
+            </div>
+
+            <div style="" class="input-group">
+              <button class="item ml-auto"
+                      (click)="resetAll()"
+                      label="Clear critères"
+                      icon="bi bi-person-clear">
+                Clear critères</button>
             </div>
 
           </form>
@@ -137,7 +158,9 @@
               >Accueil</a
               >
             </li>
-            <li class="nav-item dropdown">
+
+            <!--
+            <li *ngIf="getStatutConnection()" class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -157,6 +180,19 @@
                   <a class="dropdown-item" href="#">Mes commandes types</a>
                 </li>
               </ul>
+            </li>
+            -->
+
+
+            <li *ngIf="getStatutConnection()" class="nav-item">
+              <a class="nav-link inactive" aria-current="page" href="/commandes"
+              >Commandes-Types</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link inactive" aria-current="page" href="/panier"
+              >Panier</a
+              >
             </li>
           </ul>
         </div>

@@ -7,6 +7,7 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PanierComponent } from './pages/panier/panier.component';
 import { PresentationsComponent } from './pages/presentations/presentations.component';
+import {CommandesComponent} from "./pages/Commandes/commandes.component";
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'presentations', component: PresentationsComponent },
   { path: 'panier', component: PanierComponent },
+  { path: 'commandes', component: CommandesComponent },
   { path: 'presentation/:id', component: PresentationDetailComponent }
 ];
 
