@@ -93,7 +93,6 @@ export class PanierComponent implements OnInit {
 
   async validerCommande() {
     let idUser = localStorage.getItem('userId');
-
     let user = parseInt(idUser!.replace(/[^\d]/g, ''));
     try {
       let reponse = await lastValueFrom(

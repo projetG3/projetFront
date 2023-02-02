@@ -1,7 +1,10 @@
+<p-toast [style]="{marginTop: '80px'}" [position]="'top-right'" [autoZIndex]="true"></p-toast>
+
 <p-orderList [value]="commandes">
   <ng-template let-commande pTemplate="item">
     <div>
-      <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{commande.id}} - {{commande.nom}} - {{commande.dateheurecommande}} - {{commande.status}} - {{commande.montanttotal }}</div>
+      <div style="font-size:14px;float:right;margin:15px 5px 0 0">{{commande.nom}} du {{commande.dateheurecommande}}. MONTANT TOTAL : {{commande.montanttotal }}</div>
+      <button (click)="ajouterCommandeType(commande.id)">Ajouter à la commande</button>
     </div>
   </ng-template>
 </p-orderList>
